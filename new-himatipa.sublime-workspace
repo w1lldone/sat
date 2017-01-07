@@ -1,0 +1,687 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"col",
+				"color"
+			],
+			[
+				"null",
+				"null"
+			],
+			[
+				"isn",
+				"is_null"
+			],
+			[
+				"P",
+				"persenr"
+			],
+			[
+				"incl",
+				"incl	include …"
+			],
+			[
+				"mysql_",
+				"mysql_error"
+			],
+			[
+				"op",
+				"option	Tag"
+			],
+			[
+				"function",
+				"create_function"
+			],
+			[
+				"in",
+				"input	Tag"
+			],
+			[
+				"sess",
+				"session_start"
+			],
+			[
+				"i",
+				"if	if …"
+			],
+			[
+				"ac",
+				"action	Attr"
+			],
+			[
+				"jso",
+				"json_encode"
+			],
+			[
+				"mysq_fect",
+				"mysql_fetch_array"
+			],
+			[
+				"inlc",
+				"incl	include …"
+			],
+			[
+				"tim",
+				"timeline"
+			],
+			[
+				"di",
+				"div	Tag"
+			],
+			[
+				"sc",
+				"script"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"w",
+				"width"
+			],
+			[
+				"main",
+				"main	main"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "modal.php",
+			"settings":
+			{
+				"buffer_size": 45498,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "index.php",
+			"settings":
+			{
+				"buffer_size": 19556,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "css/main.css",
+			"settings":
+			{
+				"buffer_size": 19389,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "bootstrap-assets/css/bootstrap-theme.css",
+			"settings":
+			{
+				"buffer_size": 26132,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "bootstrap-assets/css/bootstrap.min.css",
+			"settings":
+			{
+				"buffer_size": 136830,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 219.0,
+		"last_filter": "mat",
+		"selected_items":
+		[
+			[
+				"mat",
+				"Set Syntax: MATLAB"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"htm",
+				"Set Syntax: HTML"
+			],
+			[
+				"html",
+				"HTML: Encode Special Characters"
+			],
+			[
+				"go",
+				"Set Syntax: Go"
+			]
+		],
+		"width": 512.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/xampp/htdocs/himatipa",
+		"/C/xampp/htdocs/himatipa/bootstrap-assets",
+		"/C/xampp/htdocs/himatipa/bootstrap-assets/css",
+		"/C/xampp/htdocs/himatipa/css",
+		"/C/xampp/htdocs/himatipa/img"
+	],
+	"file_history":
+	[
+		"/C/xampp/htdocs/himatipa/bagas.html",
+		"/C/xampp/htdocs/himatipa/pengurus.php",
+		"/C/xampp/htdocs/himatipa/index00.html",
+		"/C/xampp/htdocs/himatipa/Data Anggota Himatipa Angkatan 2013.html",
+		"/C/xampp/htdocs/himatipa/bootstrap-assets/css/bootstrap.css",
+		"/C/xampp/htdocs/himatipa/bootstrap-assets/css/bootstrap-theme.css",
+		"/C/xampp/htdocs/himatipa/index.html",
+		"/D/xampp/htdocs/new-himatipa/css/main.css",
+		"/D/xampp/htdocs/new-himatipa/index00.html",
+		"/D/xampp/htdocs/new-himatipa/sass/partials/_buttons.scss",
+		"/D/xampp/htdocs/new-himatipa/bootstrap-assets/css/bootstrap-theme.css",
+		"/D/xampp/htdocs/new-himatipa/bootstrap-assets/js/bootstrap.js",
+		"/D/xampp/mysql/data/himatipa/jos_vvcounter_logs.frm",
+		"/D/xampp/htdocs/new-himatipa/plugins/Icons/et-line-font/index.html",
+		"/D/xampp/htdocs/himatipa/configuration.php",
+		"/D/xampp/htdocs/RISE/template-assets/index2.html",
+		"/D/xampp/htdocs/himatipa/index.php",
+		"/D/xampp/php/php.ini",
+		"/D/xampp/phpMyAdmin/phpinfo.php",
+		"/D/xampp/htdocs/himatipa/index2.php",
+		"/D/xampp/htdocs/RISE/template-assets/index.html",
+		"/D/xampp/htdocs/RISE/template-assets/jquery/dist/jquery.js",
+		"/D/xampp/htdocs/RISE/template-assets/jquery/dist/jquery.min.js",
+		"/D/xampp/htdocs/RISE/template-assets/bootstrap-assets/css/bootstrap.css",
+		"/C/Users/Wild One/Desktop/RISE/Documentation/index.html",
+		"/D/xampp/htdocs/mrpikan/README.md",
+		"/D/xampp/htdocs/mrpikan/bower_components/bootstrap/js/carousel.js",
+		"/D/xampp/htdocs/mrpikan/bower_components/bootstrap/dist/js/bootstrap.js",
+		"/D/xampp/htdocs/mrpikan/bower_components/bootstrap/dist/css/bootstrap.css",
+		"/D/xampp/htdocs/mrpikan/bower_components/bootstrap/dist/css/bootstrap-theme.css",
+		"/D/xampp/htdocs/mrpikan/modal.php",
+		"/C/Users/Wild One/Desktop/Acara 3/programB1.m",
+		"/D/xampp/htdocs/mrpikan/pages/index.html",
+		"/D/xampp/htdocs/mrpikan/databaseeeee/mrp_ikan struktur data.sql",
+		"/C/Users/Wild One/Desktop/Carousel Template for Bootstrap.html",
+		"/D/xampp/htdocs/mrpikan/gbr_umum.php",
+		"/C/Users/Wild One/Desktop/karakteristik pelabuhan.htm",
+		"/D/xampp/htdocs/mrpikan/transaksi1.php",
+		"/D/xampp/htdocs/mrpikan/tabel_pk.php",
+		"/D/xampp/htdocs/mrpikan/home.php",
+		"/D/xampp/htdocs/mrpikan/isi.php",
+		"/D/xampp/htdocs/mrpikan/tabel_pd.php",
+		"/D/xampp/htdocs/mrpikan/tabel2.php",
+		"/D/xampp/htdocs/mrpikan/laporan.php",
+		"/D/xampp/htdocs/mrpikan/css/freelancer.min.css",
+		"/D/xampp/htdocs/mrpikan/bower_components/bootstrap/dist/css/bootstrap.min.edit.css",
+		"/D/xampp/htdocs/mrpikan/password.php",
+		"/D/Kuliah/Semester 3/Asisten Instruktur Penkom/PRESENTASI PRAKTIKUM PK/ACARA2/FILE MATLAB/ProgramA2.m",
+		"/D/Kuliah/Semester 3/Asisten Instruktur Penkom/PRESENTASI PRAKTIKUM PK/ACARA2/FILE MATLAB/programA1.m",
+		"/D/xampp/htdocs/mrpikan/insert.php",
+		"/D/xampp/htdocs/mrpikan/transaksi2.php",
+		"/D/xampp/htdocs/mrpikan/input2.php",
+		"/D/xampp/htdocs/mrpikan/input1.php",
+		"/D/xampp/htdocs/mrpikan/css/font.css",
+		"/D/xampp/htdocs/mrpikan/modul.php",
+		"/D/xampp/htdocs/mrpikan/tabel_n.php",
+		"/D/xampp/htdocs/mrpikan/prof_mar.php",
+		"/G/DHila/Aulia Riezky Madhila 11659.m",
+		"/D/xampp/htdocs/mrpikan/data.php",
+		"/D/xampp/htdocs/mrpikan/index.php",
+		"/D/Kuliah/Semester 3/Asisten Instruktur Penkom/PRESENTASI PRAKTIKUM PK/ACARA2/FILE MATLAB/programA3a.m",
+		"/D/Kuliah/Semester 3/Asisten Instruktur Penkom/PRESENTASI PRAKTIKUM PK/ACARA2/FILE MATLAB/tugasacaraA1.m",
+		"/D/xampp/htdocs/mrpikan/bower_components/bootstrap/dist/css/bootstrap.min.css",
+		"/D/xampp/htdocs/mrpikan/input3.php",
+		"/D/xampp/htdocs/mrpikan/logout.php",
+		"/D/xampp/htdocs/mrpikan/js/morris-data.js",
+		"/D/xampp/htdocs/mrpikan/js/flot-data.js",
+		"/D/xampp/htdocs/mrpikan/css/bootstrap.min.css",
+		"/D/xampp/htdocs/mrpikan/bower_components/bootstrap/dist/css/bootstrap-theme.min.css",
+		"/D/xampp/htdocs/mrpikan/grafik-mo.php",
+		"/D/xampp/htdocs/mrpikan/hapus.php",
+		"/D/xampp/htdocs/mrpikan/pages/morris.html",
+		"/D/xampp/htdocs/mrpikan/css/freelancer.min.css.ori.css",
+		"/D/xampp/htdocs/mrpikan/js/morris-data2.js",
+		"/D/xampp/htdocs/mrpikan/bower_components/morrisjs/morris.js",
+		"/D/xampp/htdocs/mrpikan/bower_components/morrisjs/morris.min.js",
+		"/D/xampp/htdocs/mrpikan/tabel1.php",
+		"/D/xampp/htdocs/mrpikan/tabel3.php",
+		"/D/xampp/htdocs/smsku/module/simpan.php",
+		"/D/xampp/htdocs/mrpikan/margin.php",
+		"/D/xampp/htdocs/pakanku/simpan.php",
+		"/D/xampp/htdocs/pakanku/daftar_bh.php",
+		"/D/xampp/htdocs/mrpikan/ceklog.php",
+		"/D/xampp/htdocs/mrpikan/transaksi1-backup.php",
+		"/D/xampp/htdocs/mrpikan/bower_components/bootstrap/less/mixins/vendor-prefixes.less",
+		"/D/xampp/htdocs/mrpikan/cektanggal.php",
+		"/D/xampp/htdocs/pakanku/input_bahan.php",
+		"/D/xampp/htdocs/mrpikan/tabel0.php",
+		"/D/xampp/htdocs/mrpikan/pages/buttons.html",
+		"/D/xampp/htdocs/mrpikan/login.php",
+		"/D/xampp/htdocs/pakanku/logout.php",
+		"/D/xampp/htdocs/mrpikan/pages/tables.html",
+		"/D/xampp/htdocs/mrpikan/tabel21.php",
+		"/D/xampp/htdocs/mrpikan/datepicker.php",
+		"/D/xampp/htdocs/pakanku/dasboard.php",
+		"/D/xampp/htdocs/mrpikan/daftar.php",
+		"/D/xampp/htdocs/pakanku/isi.php",
+		"/D/xampp/htdocs/pakanku/login.php",
+		"/D/xampp/htdocs/mrpikan/grafik.php",
+		"/D/xampp/htdocs/pakanku/password.php",
+		"/D/xampp/htdocs/mrpikan/index.html",
+		"/C/Users/Wild One/Desktop/form_MlKtmY4x.html",
+		"/D/xampp/htdocs/mrpikan/js/bootstrap-datepicker.js",
+		"/C/Users/Wild One/AppData/Local/Temp/Rar$DI00.977/datepicker.css",
+		"/C/Users/Wild One/AppData/Local/Temp/Rar$DI00.549/bootstrap-datepicker.js",
+		"/C/Users/Wild One/Desktop/bootstrap-datepicker.min.js",
+		"/D/xampp/htdocs/mrpikan/bower_components/raphael/raphael-min.js",
+		"/D/xampp/htdocs/mrpikan/bower_components/raphael/raphael.js",
+		"/D/xampp/htdocs/mrpikan/js/data.php",
+		"/D/xampp/htdocs/mrpikan/js/morris-data0.js",
+		"/D/xampp/htdocs/mrpikan/transaksi21.php",
+		"/D/xampp/htdocs/mrpikan/average.php",
+		"/D/xampp/htdocs/mrpikan/pages/grid.html",
+		"/D/xampp/htdocs/mrpikan/pages/panels-wells.html",
+		"/C/Users/Wild One/Desktop/method.go",
+		"/C/Users/Wild One/Desktop/http.go",
+		"/C/Users/Wild One/Desktop/struct.go",
+		"/C/Users/Wild One/Desktop/larik.go",
+		"/C/Users/Wild One/Desktop/banyak.go",
+		"/C/Users/Wild One/Desktop/fungsi.go",
+		"/C/Users/Wild One/Desktop/switch.go",
+		"/C/Users/Wild One/Desktop/logika.go",
+		"/C/Users/Wild One/Desktop/loop.go",
+		"/C/Users/Wild One/Desktop/variables.go",
+		"/C/Users/Wild One/Desktop/values.go",
+		"/C/Users/Wild One/Desktop/hello.go",
+		"/D/Go/bin/src/wildan/models/object.go",
+		"/D/Go/bin/src/wildan/main.go"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"D:\\xampp\\htdocs\\new-himatipa",
+			"D:\\xampp\\htdocs\\mrpikan\\css"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"btn-light",
+			"btn-transparent",
+			"fa",
+			"fun-facts",
+			"icon-lightbulb",
+			"upload_max_filesize",
+			"br1",
+			"'$_POST[tanggal]'",
+			"$_POST[tanggal]",
+			"pelabuhan",
+			"include",
+			"caption",
+			"navbar-custom",
+			"navbar-custom a",
+			"navbar-custom li a",
+			"navbar-custom a",
+			"navbar-custom",
+			"dropdown-menu",
+			"dropdown",
+			"dropdown-toggle",
+			"tooggle",
+			"toogle",
+			"drop",
+			"navbar-custom",
+			"navbar-nav",
+			"navbar-nav li a",
+			"navbar-custom",
+			"navbar-nav>li>a",
+			"navbar-custom>",
+			"navbar-custom",
+			"navbar-custom>li>a",
+			"navbar",
+			".navbar",
+			".navbar-custom",
+			".navbar-custom>li>a",
+			".navbar-nav",
+			".navbar-nav>li>a",
+			"navbar",
+			"dropdown-menu",
+			"navbar-nav",
+			"nav",
+			"dropdown-menu",
+			"dropdown-menu-hitam",
+			"dropdown-menu",
+			"grafik",
+			"succsess",
+			"suc",
+			"area",
+			"btn-outline",
+			"star-light",
+			"modal",
+			"contact",
+			"idt2",
+			"idpd",
+			"where",
+			"idpd",
+			"$idpd",
+			"include",
+			"hr2",
+			"hr1",
+			"row",
+			"lapor",
+			"submit",
+			"$row[",
+			"ambil",
+			"tanggal",
+			"large",
+			"alert",
+			"timeline",
+			"timline",
+			"timeline",
+			"$persr",
+			"persr",
+			"idpg",
+			"idpk",
+			"pengepul",
+			"timeline",
+			"task 1"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"link",
+			"'$tanggal'",
+			"$tanggal",
+			"avg(hr2)",
+			"avg(hr1)",
+			"rowa"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "modal.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 45498,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2376,
+								2376
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "index.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 19556,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2436,
+								2436
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 630.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "css/main.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 19389,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 1935.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "bootstrap-assets/css/bootstrap-theme.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 26132,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 405.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "bootstrap-assets/css/bootstrap.min.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 136830,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 270.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "new-himatipa.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"pref",
+				"bower_components\\bootstrap\\less\\mixins\\vendor-prefixes.less"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 232.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
