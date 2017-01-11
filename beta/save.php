@@ -2,6 +2,7 @@
 session_start();
 if ($_SESSION['pref']=='admin') {
 
+	include 'lib/ImageResize.php';
 	include 'config.php';
 	include 'data.php';
 
@@ -175,11 +176,7 @@ if ($_SESSION['pref']=='admin') {
 			echo "File sudah ada, mohon ganti nama file";
 			$uploadOk = 0;
 		}
-	// Check file size
-		if ($_FILES["fileToUpload"]["size"] > 500000) {
-			echo "Ukuran File terlalu besar";
-			$uploadOk = 0;
-		}
+
 	// Allow certain file formats
 		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 			&& $imageFileType != "gif" ) {
@@ -193,7 +190,19 @@ if ($_SESSION['pref']=='admin') {
 		} else {
 			if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 				$nama=basename( $_FILES["fileToUpload"]["name"]);
+				// $nota="img/nota/".$nama;
+				$image = new \Eventviva\ImageResize("../img/nota/$nama");
+
+				if ($imageFileType == "jpg" || $imageFileType == "jpeg") {
+					$image->quality_jpg = 50;
+				} elseif ($imageFileType == "png") {
+					$image->quality_png = 5;
+				}
+
+				$image->resizeToHeight(300);
+				$image->save("../img/nota/".$nama);
 				$nota="img/nota/".$nama;
+
 				mysql_query("INSERT INTO transaksi(ukm, username, periode, tanggal, jumlah, keperluan, nota, keterangan)
 					VALUES(
 					'$_POST[ukm]',
@@ -247,11 +256,11 @@ if ($_SESSION['pref']=='admin') {
 				echo "File sudah ada, mohon ganti nama file";
 				$uploadOk = 0;
 			}
-		// Check file size
-			if ($_FILES["fileToUpload"]["size"] > 500000) {
-				echo "Ukuran File terlalu besar";
-				$uploadOk = 0;
-			}
+		// // Check file size
+		// 	if ($_FILES["fileToUpload"]["size"] > 500000) {
+		// 		echo "Ukuran File terlalu besar";
+		// 		$uploadOk = 0;
+		// 	}
 		// Allow certain file formats
 			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 				&& $imageFileType != "gif" ) {
@@ -265,6 +274,17 @@ if ($_SESSION['pref']=='admin') {
 			} else {
 				if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 					$nama=basename( $_FILES["fileToUpload"]["name"]);
+					// $nota="img/nota/".$nama;
+					$image = new \Eventviva\ImageResize("../img/nota/$nama");
+
+					if ($imageFileType == "jpg" || $imageFileType == "jpeg") {
+						$image->quality_jpg = 50;
+					} elseif ($imageFileType == "png") {
+						$image->quality_png = 5;
+					}
+
+					$image->resizeToHeight(300);
+					$image->save("../img/nota/".$nama);
 					$nota="img/nota/".$nama;
 					$notalama=hasil("SELECT nota from transaksi where id = $_POST[id]");
 					mysql_query("UPDATE transaksi set
