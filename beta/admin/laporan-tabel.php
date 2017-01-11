@@ -16,12 +16,6 @@ if (!empty($_POST['periode'])) {
         $keperluan="=$_POST[keperluan]";
         $kep="<>$_POST[keperluan]";
     }
-    
-
-    
-    
-    
-
     $sql="SELECT * from transaksi where periode = $periode and ukm $ukm and keperluan $keperluan";
  }
 ?>
@@ -35,10 +29,8 @@ if (!empty($_POST['periode'])) {
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
-            <div class="panel-heading" style="height: 51px">
-                <a class="pull-right" href="modul.php?isi=transaksi-tambah">
-                    <button type="button" class="btn btn-primary"><i class="fa fa-plus-circle"></i>  Transaksi</button>
-                </a>Transaksi UKM SAT Tahun : 
+            <div class="panel-heading">
+                Transaksi UKM SAT Tahun : 
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
@@ -155,21 +147,9 @@ if (!empty($_POST['periode'])) {
 </div>
 <!-- /.row -->
 
-<div class="modal fade" id="ModalLap" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Lihat Transaksi</h4>
-            </div>
-            <div class="modal-body" id="isiModal">
-
-            </div>
-            <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
+<!-- fixed action button -->
+<div class="fixed-action-btn" style="bottom: 20px; right: 2%;">
+    <a href="modul.php?isi=transaksi-tambah" class="btn-floating btn-large teal" title="Tambah Transaksi">
+      <i class="fa fa-plus"></i>
+    </a>
 </div>

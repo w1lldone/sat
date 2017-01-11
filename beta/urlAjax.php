@@ -107,24 +107,32 @@ if(!empty($_POST["username"]) && $_GET['act']=='cek-user') {
 	      while ($row=mysql_fetch_array($q)){
 	        $ukm=hasil("SELECT nama from ukm where id = $row[ukm]");
 	        $keperluan=hasil("SELECT keperluan from keperluan where id = $row[keperluan]");
-	        echo"<tr class='odd gradeX'>";
-	        echo"<td>$row[tanggal]</td>";
-	        echo"<td>$ukm</td>";
-	        echo"<td>Rp.$row[jumlah]</td>";
-	        echo"<td>$keperluan</td>";
 	        ?>
-	        <!-- Split button --> 
-	        <td class="text-center">
-	            <a href="#" onclick="<?php echo 'lihatTransaksi('.$row['id'].')'; ?>">
-	                <button data-toggle="modal" data-target="#ModalLap" id="lihatLap" value="<?php echo $row['id']; ?>" title="lihat transaksi" type="button" class="btn btn-success btn-circle"><i class="fa fa-eye"></i></button>
-	            </a>
-	            <a href="modul.php?isi=transaksi-edit&id=<?php echo $row['id']; ?>">
-	                <button title="edit transaksi" type="button" class="btn btn-warning btn-circle"><i class="fa fa-edit"></i></button>
-	            </a>
-	            <a href="save.php?act=hapus_transaksi&id=<?php echo $row['id']; ?> " onclick="return confirm('Anda Yakin?')">
-	                <button title="hapus transaksi" type="button" class="btn btn-danger btn-circle"><i class="fa fa-times"></i></button>
-	            </a>
-	        </td> 
+			<li class="collection-item avatar">
+		      <i class="circle teal" style="font-style: normal;"><?php echo substr($ukm, 0,1) ?></i> 
+		      <span class="title">
+			      <a href="#" onclick="<?php echo 'lihatTransaksi('.$row['id'].')'; ?>" data-toggle="modal" data-target="#ModalLap" ><?php echo $ukm; ?></a>
+		      </span>
+		      <?php 
+		       echo "<p> Rp.$row[jumlah] - $keperluan <br> $row[tanggal] </p>";
+		      ?>
+		      <a href="#!" type="button" class="secondary-content dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true"><i class="fa fa-ellipsis-v fa-2x"></i></a>
+			      <ul class="dropdown-menu pull-right" style="top: 10px;">
+				    <li><a href="modul.php?isi=transaksi-edit&id=<?php echo $row['id']; ?>">Edit</a></li>
+				    <li><a href="save.php?act=hapus_transaksi&id=<?php echo $row['id']; ?> " onclick="return confirm('Anda Yakin?')">Hapus</a></li>
+				  </ul>
+		    </li>
 	<?php }
+	}
+
+	if ($_GET['act']=='mobileview') {
+		$name="mobileview";
+		if ($_POST['toggle']=='true') {
+			$val="benar";
+		} elseif ($_POST['toggle']=='false') {
+			$val="salah";
+		}
+		setcookie($name, $val, time() + (86400 * 30), "/");
+		echo $_COOKIE[$name];
 	}
 ?>

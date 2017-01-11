@@ -22,7 +22,7 @@ if (isset($_POST['periode'])) {
                     <div class="col-lg-4">
                         <form method="post" role="form" action="modul.php?isi=ukm-tabel">
                             <div class="form-group input-group">
-                                <span class="input-group-addon">Periode</span>                                
+                                <span class="input-group-addon"><i class="fa fa-calendar-o"></i></span>                                
                                 <select class="form-control" name="periode" onchange="this.form.submit()">
                                     <?php
                                     $sql2="SELECT DISTINCT periode FROM anggaran WHERE periode <> $periode order by periode desc";
@@ -42,12 +42,6 @@ if (isset($_POST['periode'])) {
                         </form> 
                     </div>
                     <div class="col-lg-8">
-                        <a href="#">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-circle"></i>  Periode</button>
-                        </a>
-                        <a href="modul.php?isi=ukm-tambah">
-                            <button type="button" class="btn btn-success"><i class="fa fa-plus-circle"></i>  UKM/Budget</button>
-                        </a>
                     </div>    
                 </div>
                 <div class="dataTable_wrapper">
@@ -127,13 +121,11 @@ if (isset($_POST['periode'])) {
 
 <!-- Fixed action button -->
 <div class="fixed-action-btn click-to-toggle" style="bottom: 35px; right: 24px;">
-        <a class="btn-floating btn-large red">
-          <i class="material-icons">menu</i>
+        <a class="btn-floating btn-large teal" title="Tambah">
+          <i class="fa fa-plus"></i>
         </a>
         <ul style="list-style-type: none;">
-          <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-          <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-          <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-          <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+          <li><a href="modul.php?isi=ukm-tambah" class="btn-floating green" title="Tambah UKM/Budget"><i class="fa fa-usd"></i></a></li>
+          <li><a data-toggle="modal" data-target="#myModal" class="btn-floating blue" title="Tambah Periode"><i class="fa fa-calendar-o"></i></a></li>
         </ul>
 </div>

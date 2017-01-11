@@ -1,5 +1,6 @@
 <?php
 	include 'cekadmin.php'; 
+
 	if ($_SESSION['pref']=='admin') {
 
 ?>
@@ -22,6 +23,9 @@
     <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
 
     <link href="../css/icon.css" rel="stylesheet">
+
+    <!-- toggle button css -->
+    <link href="../css/bootstrap-toggle.min.css" rel="stylesheet">
 
     <!-- Bootstrap Css -->
     <link href="../bootstrap-assets/css/bootstrap.min.css" rel="stylesheet">
@@ -54,7 +58,7 @@
 
 </head>
 
-<body >
+<body onpageshow="mengisiCard()">
 <?php
     $level="";
     if(!empty($_SESSION['nama'])){
@@ -71,7 +75,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="modul.php?isi=admin">Admin SAT</a>
+			<a class="navbar-brand teal-text" href="modul.php?isi=admin-home">Admin SAT</a>
 		</div>
 		<!-- /.navbar-header -->
 
@@ -108,6 +112,9 @@
 						<!-- /input-group -->
 					</li>
 					<li>
+                        <a href="modul.php?isi=admin-home"><i class="fa fa-home fa-fw"></i> Home</a>
+                    </li> 
+                    <li>
 						<a href="modul.php?isi=ukm-tabel"><i class="fa fa-usd fa-fw"></i> UKM/Budget</a>
 					</li>                       
 					<li>
@@ -116,9 +123,14 @@
 					<li>
 						<a href="modul.php?isi=laporan-tabel"><i class="fa fa-shopping-cart fa-fw"></i> Laporan</a>
 					</li>
-                    <li>
-                        <a href="modul.php?isi=card"><i class="fa  fa-circle-o-notch fa-fw"></i> Card</a>
-                    </li>                         
+                    <div class="sidebar-search">
+                        <form action="toggle.php" method="POST">
+                            <div class="input-group">
+                                <input id="mobToggle" name="toggle" type="checkbox" checked data-toggle="toggle" data-size="small" data-on="Mobile View On" data-off="Mobile View Off" data-width="150">
+                            </div>
+                        </form>
+                        <div id="cek"></div>
+                    </div>                        
 				</ul>
 			</div>
 			<!-- /.sidebar-collapse -->
@@ -136,6 +148,25 @@
         include "isi.php";  ?>
     </div>
 
+    <!-- modal lihat transaksi -->
+    <div class="modal fade" id="ModalLap" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Lihat Transaksi</h4>
+            </div>
+            <div class="modal-body" id="isiModal">
+
+            </div>
+            <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
     <!-- jQuery -->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -144,6 +175,9 @@
 
     <!-- Import materialize -->
     <script type="text/javascript" src="../js/materialize.min.js"></script>
+
+    <!-- Button tables js -->
+    <script src="../js/bootstrap-toggle.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
@@ -161,6 +195,23 @@
     <link rel="stylesheet" href="../css/bootstrap-datepicker3.css"/>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+
+    <!-- set data toggle on/off -->
+    <script>
+        $(document).ready(function() {
+            <?php
+            if (isset($_COOKIE['mobileview'])) {
+                if ($_COOKIE['mobileview']=="on") {
+                    echo "$('#mobToggle').bootstrapToggle('on');";
+                } else {
+                    echo "$('#mobToggle').bootstrapToggle('off');";
+                }
+            } else{
+                echo "$('#mobToggle').bootstrapToggle('off');";
+            }
+            ?>
+        })
+    </script>
 
 	<script>
 	    $(document).ready(function() {
@@ -203,13 +254,13 @@
 
     <!-- isi tabel -->
     <script>
-    function mengisiTabel() {
+    function mengisiCard() {
         $.ajax({
         url: "urlajax.php?act=isi-tabel",
         data:"periode="+ $("#periode").val() +"&ukm="+ $("#ukm").val() + "&keperluan="+ $("#keperluan").val(),
         type: "POST",
         success:function(data){
-            $("#isiTabel").html(data);
+            $("#isiCard").html(data);
         },
         error:function (){}
         });
@@ -245,6 +296,23 @@
         $(document).ready(function () {
             $("#password1, #password2").keyup(cekpassword);
         });        
+    </script>
+
+    <script>
+      $(function() {
+        $('#mobToggle').change(function() {
+            $.ajax({
+                url: "save.php?act=toggle",
+                data:'toggle='+$(this).prop('checked'),
+                type: "POST",
+                success:function(){
+                    location.reload();
+                },
+                error:function (){
+                }
+            });
+        });
+      })
     </script>
 </body>
 

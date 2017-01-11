@@ -1,82 +1,62 @@
+<?php
+	session_start();
+	if (isset($_SESSION['pref'])) {
+		header('location:modul.php?isi=admin-home');
+	}
+?>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
+	<title></title>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+	<!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="../css/materialize.css"  media="screen,projection"/>
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <!-- Import Google Font -->
+    <link href="../css/icon.css" rel="stylesheet">
 
-    <!-- Bootstrap Css -->
-    <link href="../bootstrap-assets/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
-
 <body>
+<main>
+	<div class="container" style="padding: 0 20px 0 20px;">
+		<div class="row" style="margin-top: 30px">
+			<div class="col m5 offset-m3">
+				<div class="center"><img src="../img/logo/logo-sat.png" width="40%" height="40%"></div>
+				<h5 class="light center">Login Sistem Informasi SAT</h5>
+				<div class="card grey lighten-3">
+					<div class="card-content">
+						<div class="row center">
+							<i class="material-icons large teal-text text-lighten-2">person_pin</i>
+						</div>
+						<form class="row" action="ceklog.php" method="POST">
+							<div class="col s10 offset-s1">
+								<div class="input-field">
+						          <input name="username" id="username" type="text" class="validate" required>
+						          <label for="username">Username</label>
+						        </div>
+								<div class="input-field">
+						          <input name="password" id="password" type="password" class="validate" required>
+						          <label for="password">Password</label>
+						        </div>
+						        <div class="input-field right">
+							        <button class="btn waves-effect waves-light" type="submit" name="action">Login</button>
+						        </div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="login-panel panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form role="form" method="post" action="ceklog.php">
-                            <fieldset>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Username" name="username" type="username" autofocus>
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                    </label>
-                                </div>
-                                <!-- Change this to a button or input when using this as a form -->
-                                <button class="btn btn-lg btn-success btn-block">Login</button>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- jQuery -->
+<!-- jQuery -->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../bootstrap-assets/js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="dist/js/sb-admin-2.js"></script>
-
+<!-- Import materialize js -->
+    <script type="text/javascript" src="../js/materialize.min.js"></script>
 </body>
-
 </html>

@@ -16,7 +16,7 @@
 			$_SESSION['username']=$rs['username'];
 
 			if ($_SESSION['pref']=='admin') {
-				header('location:modul.php?isi=admin');
+				header('location:modul.php?isi=admin-home');
 			}
 			
 			

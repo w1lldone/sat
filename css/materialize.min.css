@@ -3,6 +3,7 @@
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
+
 i.iright {
   float: right;
   margin-left: 15px;
@@ -2172,16 +2173,16 @@ i.iright {
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 .collection {
-    margin: 0.5rem 0 1rem 0;
-    border: 1px solid #e0e0e0;
-    border-radius: 2px;
+    margin: 0.5rem 0 0.5rem 0;
+/*    border: 1px solid #e0e0e0;
+    border-radius: 2px;*/
     overflow: hidden;
     position: relative
 }
 
 .collection .collection-item {
     background-color: #fff;
-    line-height: 1.5rem;
+    line-height: 2rem;
     padding: 10px 20px;
     margin: 0;
     border-bottom: 1px solid #e0e0e0
@@ -2216,7 +2217,8 @@ i.iright {
 }
 
 .collection .collection-item.avatar p {
-    margin: 0
+    margin: 0;
+    color: rgba(49, 53, 52, 0.6);
 }
 
 .collection .collection-item.avatar .secondary-content {
@@ -4319,9 +4321,9 @@ button.btn-floating {
 .collapsible-header {
     display: block;
     cursor: pointer;
-    min-height: 3rem;
+    min-height: 6rem;
     line-height: 3rem;
-    padding: 0 1rem;
+    padding: 2rem;
     background-color: #fff;
     border-bottom: 1px solid #ddd
 }

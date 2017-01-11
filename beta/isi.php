@@ -4,11 +4,23 @@
 		}
 
 		if($_GET['isi']=="user-tabel"){
-			include "admin/user-tabel.php";
+			$tabel="user-tabel.php";
+			if (isset($_COOKIE['mobileview'])) {
+				if ($_COOKIE['mobileview']=='on') {
+					$tabel="user-tabel-m.php";
+				}
+			}
+			include "admin/$tabel";
 		}
 
 		if($_GET['isi']=="ukm-tabel"){
-			include "admin/ukm-tabel.php";
+			$tabel="ukm-tabel.php";
+			if (isset($_COOKIE['mobileview'])) {
+				if ($_COOKIE['mobileview']=='on') {
+					$tabel="ukm-tabel-m.php";
+				}
+			}
+			include "admin/$tabel";
 		}
 
 		if($_GET['isi']=="ukm-tambah"){
@@ -27,12 +39,14 @@
 			include "admin/user-edit.php";
 		}
 
-		if($_GET['isi']=="anggaran-tabel"){
-			include "admin/anggaran-tabel.php";
-		}
-
 		if($_GET['isi']=="laporan-tabel"){
-			include "admin/laporan-tabel.php";
+			$tabel="laporan-tabel.php";
+			if (isset($_COOKIE['mobileview'])) {
+				if ($_COOKIE['mobileview']=='on') {
+					$tabel="laporan-tabel-m.php";
+				}
+			}
+			include "admin/$tabel";
 		}
 
 		if($_GET['isi']=="transaksi-tambah"){
@@ -47,7 +61,8 @@
 			include "admin/transaksi-edit.php";
 		}
 
-		if($_GET['isi']=="card"){
-			include "admin/card.php";
+		if($_GET['isi']=="admin-home"){
+			include "admin/admin-home.php";
 		}
+
 ?>

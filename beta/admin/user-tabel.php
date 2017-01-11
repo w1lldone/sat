@@ -9,9 +9,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <a href="modul.php?isi=user-tambah">
-                    <button type="button" class="btn btn-primary"><i class="fa fa-plus-circle"></i>  User</button>
-                </a>
+            Tabel User
             </div>
 
             <!-- /.panel-heading -->
@@ -59,3 +57,10 @@
     <!-- /.col-lg-12 -->
 </div>
             <!-- /.row -->
+
+            <!-- Fixed action button -->
+<div class="fixed-action-btn" style="bottom: 20px; right: 24px;">
+    <a href="modul.php?isi=user-tambah" class="btn-floating btn-large teal" title="Tambah User">
+      <i class="fa fa-plus"></i>
+    </a>
+</div>
