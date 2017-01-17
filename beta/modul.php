@@ -1,8 +1,5 @@
 <?php
-	include 'cekadmin.php'; 
-
-	if ($_SESSION['pref']=='admin') {
-
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,11 +57,14 @@
 
 <body onpageshow="mengisiCard()">
 <?php
+    include 'config.php'; 
+    include 'data.php';
     $level="";
     if(!empty($_SESSION['nama'])){
         $level=$_SESSION['pref'];
-        $ukm=$_SESSION['ukm'];
+        $sukm=$_SESSION['ukm'];
         $username=$_SESSION['username'];
+        $namauser=hasil("SELECT nama from user where username = '$username'");
     }
     if($level=='admin'){ ?>           
 	<nav class="navbar navbar-default navbar-static-top z-depth-1" role="navigation" style="margin-bottom: 0">
@@ -85,9 +85,10 @@
 					<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
 				</a>
 				<ul class="dropdown-menu dropdown-user">
+                    <li><a>Halo, <?php echo $namauser; ?></a></li>
+                    <li class="divider"></li>
 					<li><a href="modul.php?isi=user-edit&username=<?php echo $username; ?>"><i class="fa fa-gear fa-fw"></i> Akun</a>
 					</li>
-					<li class="divider"></li>
 					<li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
 					</li>
 				</ul>
@@ -123,6 +124,12 @@
 					<li>
 						<a href="modul.php?isi=laporan-tabel"><i class="fa fa-shopping-cart fa-fw"></i> Laporan</a>
 					</li>
+                    <li>
+                        <a href="modul.php?isi=kegiatan-tabel"><i class="fa fa-camera fa-fw"></i> Kegiatan</a>
+                    </li>
+                    <li>
+                        <a href="modul.php?isi=pengurus"><i class="fa fa-group fa-fw"></i> Kepengurusan</a>
+                    </li>
                     <div class="sidebar-search">
                         <form action="toggle.php" method="POST">
                             <div class="input-group">
@@ -137,14 +144,78 @@
 		</div>
 		<!-- /.navbar-static-side -->
 	</nav>
-	<?php } //if privilage tpi
-	// else if($level=='admin'){ 
+	<?php } //if privilage admin
+	elseif($level=='ukm'){ ?>
+        <nav class="navbar navbar-default navbar-static-top z-depth-1" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand teal-text" href="modul.php?isi=admin-home">Admin UKM SAT</a>
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a>Halo, <?php echo $namauser; ?></a></li>
+                    <li class="divider"></li>
+                    <li><a href="modul.php?isi=user-edit&username=<?php echo $username; ?>"><i class="fa fa-gear fa-fw"></i> Akun</a>
+                    </li>
+                    <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+        <!-- /.navbar-top-links -->
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="sidebar-search">
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="Search...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default z-depth-0" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                        <!-- /input-group -->
+                    </li>
+                    <li>
+                        <a href="modul.php?isi=admin-home"><i class="fa fa-home fa-fw"></i> Home</a>
+                    </li>  
+                    <li>
+                        <a href="modul.php?isi=laporan-tabel"><i class="fa fa-shopping-cart fa-fw"></i> Laporan</a>
+                    </li>
+                    <div class="sidebar-search">
+                        <form action="toggle.php" method="POST">
+                            <div class="input-group">
+                                <input id="mobToggle" name="toggle" type="checkbox" checked data-toggle="toggle" data-size="small" data-on="Mobile View On" data-off="Mobile View Off" data-width="150">
+                            </div>
+                        </form>
+                        <div id="cek"></div>
+                    </div>                        
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+    <?php } 
 	?>
 
     <div id="page-wrapper" style="background-color: #f8f8f8">
         <?php
-        include 'config.php'; 
-        include 'data.php';
         include "isi.php";  ?>
     </div>
 
@@ -241,7 +312,7 @@
     <script>
     function checkAvailability() {
         $.ajax({
-        url: "urlajax.php?act=cek-user",
+        url: "urlAjax.php?act=cek-user",
         data:'username='+$("#username").val(),
         type: "POST",
         success:function(data){
@@ -256,7 +327,7 @@
     <script>
     function mengisiCard() {
         $.ajax({
-        url: "urlajax.php?act=isi-tabel",
+        url: "urlAjax.php?act=isi-tabel",
         data:"periode="+ $("#periode").val() +"&ukm="+ $("#ukm").val() + "&keperluan="+ $("#keperluan").val(),
         type: "POST",
         success:function(data){
@@ -271,7 +342,7 @@
     <script>
     function lihatTransaksi(id) {
         $.ajax({
-        url: "urlajax.php?act=lihat-trans",
+        url: "urlAjax.php?act=lihat-trans",
         data:'id='+id,
         type: "POST",
         success:function(data){
@@ -314,8 +385,13 @@
         });
       })
     </script>
+
+    <!-- Export to excel -->
+    <script>
+    function ExportExcel() {
+        window.location('urlAjax.php?act=export-excel&periode=2017&ukm=3')
+    }
+    </script>
 </body>
 
 </html>
-
-<?php } ?>

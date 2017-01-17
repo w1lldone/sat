@@ -11,56 +11,45 @@
 		
 	}
 
-	function tambahUrut($tabel){
-		$sql="select * from $tabel where status = 1";
-		$q=mysql_query($sql) or die(mysql_error());
-		while ($row=mysql_fetch_array($q)){
-			$b=$row['urut']+1;
-			mysql_query("update $tabel set urut = $b where id = $row[id] ");
+	function uploadFile($files, $target_dir, $loc){
+		$hasil=array();
+		$target_file = $target_dir . basename($files["fileToUpload"]["name"]);
+		$uploadOk = 1;
+		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
+	// Check if image file is a actual image or fake image
+		$check = getimagesize($files["fileToUpload"]["tmp_name"]);
+		if($check !== false) {
+			$ket =  "File is an image - " . $check["mime"] . ".";
+			$uploadOk = 1;
+		} else {
+			$ket = "File is not an image.";
+			$uploadOk = 0;
 		}
-	}
-
-	function kurangUrut($tabel, $start){
-		$query="select * from $tabel where status = 1 and urut > $start";
-		$qq=mysql_query($query) or die(mysql_error());
-		$counts=mysql_num_rows($qq)+$start;
-		while ($start <= $counts) {
-			$a=$start+1;
-			mysql_query("update $tabel set urut = $start where urut = $a ");
-			$start++;
+	// Check if file already exists
+		if (file_exists($target_file)) {
+			$ket = "File sudah ada, mohon ganti nama file";
+			$uploadOk = 0;
 		}
 
-	}
-
-	function urutUp($tabel, $id){
-		$start=hasil("select urut from $tabel where id = $id");
-		$up=$start-1;
-		$atas=hasil("select id from $tabel where urut = $up");	
-		mysql_query("update $tabel set urut = $start where id = $atas ");
-		mysql_query("update $tabel set urut = $up where id = $id");
-	}
-
-	function urutDown($tabel, $id){
-		$start=hasil("select urut from $tabel where id = $id");
-		$down=$start+1;
-		$bawah=hasil("select id from $tabel where urut = $down");	
-		mysql_query("update $tabel set urut = $start where id = $bawah ");
-		mysql_query("update $tabel set urut = $down where id = $id");
-	}
-
-	function pengurus($id){
-		$sql="select * from pengurus where id = $id ";
-        $q=mysql_query($sql) or die(mysql_error());
-        $row=mysql_fetch_array($q);
-        $pecah=explode(" ", $row['nama']);
-        $inisial[0]="";
-        if (isset($pecah[2]) && $pecah[2]!="") {
-           $inisial=str_split($pecah[2]);
-        }
-        $nama=$pecah[0]." ".$pecah[1]." ".$inisial[0];
-	    echo "<a href='#' data-toggle='modal' data-target='#$row[panggilan]'>";
-	    echo 	"<img class='img-circle center-block bundar' src='$row[gambar]' width='175' height='175' alt='logo'></a>";
-        echo "<h3 class='number timer'>$nama</h3>";
-        echo "<h5>$row[jabatan]</h5>";
-	}
+	// Allow certain file formats
+		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+			&& $imageFileType != "gif" ) {
+			$ket = "Hanya file gambar yg boleh diupload";
+			$uploadOk = 0;
+		}
+		// Check if $uploadOk is set to 0 by an error
+		if ($uploadOk == 0) {
+			$hasil = array('status' => $uploadOk, 'ket' => $ket);
+		// if everything is ok, try to upload file
+		} else {
+			if (move_uploaded_file($files["fileToUpload"]["tmp_name"], $target_file)) {
+				$nama=basename( $files["fileToUpload"]["name"]);
+				$hasil = array('status' => $uploadOk, 'nama' => "$loc"."$nama");
+			} else {
+				$hasil = array('status' => 0);
+			}
+		}
+		return $hasil;
+	} // end function
 ?>

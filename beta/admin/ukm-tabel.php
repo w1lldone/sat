@@ -63,8 +63,8 @@ if (isset($_POST['periode'])) {
                             echo"<td>$row[nama]</td>";
                             $anggaran=hasil("SELECT anggaran from anggaran where ukm = $row[id] and periode = $periode");
                             $keluar=hasil("SELECT SUM(jumlah) from transaksi where ukm = $row[id] and periode = $periode");
-                            echo"<td>$anggaran</td>";
-                            echo"<td>$keluar</td>";
+                            echo"<td>Rp.".number_format($anggaran, 0 , ',', '.')."</td>";
+                            echo"<td>Rp.".number_format($keluar, 0 , ',', '.')."</td>";
                             ?>
                             <!-- Split button --> 
                             <td class="text-center">

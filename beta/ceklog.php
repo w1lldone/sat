@@ -18,6 +18,10 @@
 			if ($_SESSION['pref']=='admin') {
 				header('location:modul.php?isi=admin-home');
 			}
+
+			if ($_SESSION['pref']=='ukm') {
+				header('location:modul.php?isi=admin-home');
+			}
 			
 			
 	} 

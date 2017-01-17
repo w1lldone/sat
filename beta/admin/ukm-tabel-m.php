@@ -43,7 +43,7 @@ if (isset($_POST['periode'])) {
 								<?php echo $row['nama']; ?>
 							</span>
 							<?php 
-							echo "<p>Anggaran : </i> Rp.$anggaran <br> Pengeluaran : Rp.$keluar </p>";
+							echo "<p>Anggaran : </i> Rp.".number_format( $anggaran, 0 , ',', '.')." <br> Pengeluaran : Rp.".number_format( $keluar, 0 , ',', '.')." </p>";
 							?>
 							<a href="#!" type="button" class="secondary-content dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true"><i class="fa fa-ellipsis-v fa-2x"></i></a>
 							<ul class="dropdown-menu pull-right" style="top: 10px;">

@@ -96,13 +96,13 @@ if(!empty($_POST["username"]) && $_GET['act']=='cek-user') {
 		echo "gagal";
 	}
 
-	} // lihat trans
+	} // Isi tabe transaksi mobile
 
 	if ($_GET['act']=='isi-tabel') {
 		$periode=$_POST['periode'];
 		$ukm=$_POST['ukm'];
 		$keperluan=$_POST['keperluan'];
-		$sql="SELECT * from transaksi where periode $periode and ukm $ukm and keperluan $keperluan";
+		$sql="SELECT * from transaksi where periode $periode and ukm $ukm and keperluan $keperluan order by tanggal desc";
 	      $q=mysql_query($sql) or die(mysql_error());
 	      while ($row=mysql_fetch_array($q)){
 	        $ukm=hasil("SELECT nama from ukm where id = $row[ukm]");
@@ -113,8 +113,9 @@ if(!empty($_POST["username"]) && $_GET['act']=='cek-user') {
 		      <span class="title">
 			      <a href="#" onclick="<?php echo 'lihatTransaksi('.$row['id'].')'; ?>" data-toggle="modal" data-target="#ModalLap" ><?php echo $ukm; ?></a>
 		      </span>
-		      <?php 
-		       echo "<p> Rp.$row[jumlah] - $keperluan <br> $row[tanggal] </p>";
+		      <?php
+		      $uang=number_format($row['jumlah'], 0, ',', '.'); 
+		       echo "<p> Rp. $uang - $keperluan <br> $row[tanggal] </p>";
 		      ?>
 		      <a href="#!" type="button" class="secondary-content dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true"><i class="fa fa-ellipsis-v fa-2x"></i></a>
 			      <ul class="dropdown-menu pull-right" style="top: 10px;">
@@ -123,16 +124,34 @@ if(!empty($_POST["username"]) && $_GET['act']=='cek-user') {
 				  </ul>
 		    </li>
 	<?php }
-	}
+	} // isi tabel
 
-	if ($_GET['act']=='mobileview') {
-		$name="mobileview";
-		if ($_POST['toggle']=='true') {
-			$val="benar";
-		} elseif ($_POST['toggle']=='false') {
-			$val="salah";
+	if ($_GET['act']=='export-excel') {
+		
+		include 'lib/php-export-data.class.php';
+
+		$exporter = new ExportDataExcel('browser', 'laporan.xls');
+
+		$exporter->initialize(); // starts streaming data to web browser
+
+		$exporter->addRow(array("tanggal", "ukm", "penginput", "keperluan", "jumlah", "keterangan"));
+
+		$idukm="";
+
+		if (isset($_POST['ukm']) && $_POST['ukm']!='') {
+			$idukm="$_POST[ukm]";
 		}
-		setcookie($name, $val, time() + (86400 * 30), "/");
-		echo $_COOKIE[$name];
+
+		$sql="SELECT * from transaksi where periode = $_POST[periode] and ukm $idukm";
+		$q=mysql_query($sql) or die(mysql_error());
+	    while ($row=mysql_fetch_array($q)){
+		    $ukm=hasil("SELECT nama from ukm where id = $row[ukm]");
+		    $keperluan=hasil("SELECT keperluan from keperluan where id = $row[keperluan]");
+		    $nama=hasil("SELECT nama from user where username = '$row[username]'");
+		    
+			$exporter->addRow(array("$row[tanggal]", "$ukm", "$nama", "$keperluan", "$row[jumlah]", "$row[keterangan]"));
+		}
+
+		$exporter->finalize();
 	}
 ?>

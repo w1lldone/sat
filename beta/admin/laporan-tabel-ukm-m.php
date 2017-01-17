@@ -20,12 +20,8 @@
                         <span class="input-group-addon"><i class="fa fa-dribbble"></i> </span>                                
                         <select class="form-control" name="ukm" id="ukm" onclick="mengisiCard()">
                             <?php
-                            $sql2="SELECT * from ukm";
-                            $q2=mysql_query($sql2) or die(mysql_error());
-                            echo "<option value=''>All</option>";
-                            while ($row2=mysql_fetch_array($q2)){
-                                echo "<option value='=$row2[id]'>$row2[nama]</option>";
-                            }    
+                            $nama=hasil("SELECT nama from ukm where id = $sukm");
+                            echo "<option value='=$sukm'>$nama</option>";
                             ?>
                         </select>
                     </div>
@@ -42,7 +38,7 @@
                             ?>
                         </select>
                     </div>
-                    <a class="btn yellow darken-4 waves-effect waves-light" href="modul.php?isi=laporan-tabel" title="Reset"><i class="fa fa-repeat"></i></a>  
+                    <a class="btn yellow darken-4 waves-effect waves-light" href="modul.php?isi=laporan-tabel" title="Reset"><i class="fa fa-repeat"></i></a> 
                 </form> 
             </div>
         </div>

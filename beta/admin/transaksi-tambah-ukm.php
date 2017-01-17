@@ -48,7 +48,7 @@
                                         <span class="input-group-addon"><i class="fa fa-dribbble"></i></span>
                                         <select class="form-control" name="ukm">
                                             <?php
-                                            $sql2="SELECT * FROM ukm";
+                                            $sql2="SELECT * FROM ukm where id = $sukm";
                                             $q2=mysql_query($sql2) or die(mysql_error());
                                             while ($row2=mysql_fetch_array($q2)){
                                                 echo "<option value='$row2[id]'>$row2[nama]</option>";
@@ -61,7 +61,7 @@
                                     <label>Jumlah</label>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon">Rp</span>
-                                        <input type="number" class="form-control" placeholder="Tanpa Titik / Koma" name="jumlah" required>
+                                        <input type="number" class="form-control" placeholder="Tanpa titik / koma" name="jumlah" required>
                                     </div>
                                 </div>
                             </div>

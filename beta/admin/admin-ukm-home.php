@@ -5,7 +5,7 @@
 			<div class="card-content">
 				<ul class="collection">
 				<?php
-				$sql="SELECT * from transaksi order by tanggal desc limit 5";
+				$sql="SELECT * from transaksi where ukm = $sukm order by tanggal desc limit 5";
 				$q=mysql_query($sql) or die(mysql_error());
 				while ($row=mysql_fetch_array($q)){
 					$ukm=hasil("SELECT nama from ukm where id = $row[ukm]");
@@ -17,7 +17,7 @@
 					      <a href="#" onclick="<?php echo 'lihatTransaksi('.$row['id'].')'; ?>" data-toggle="modal" data-target="#ModalLap" ><?php echo $ukm; ?></a>
 				      </span>
 				      <?php 
-				       echo "<p> Rp.".number_format( $row['jumlah'], 0 , ',', '.')." - $keperluan <br> $row[tanggal] </p>";
+				       echo "<p> Rp. ".number_format($row['jumlah'], 0 , ',', '.')." - $keperluan <br> $row[tanggal] </p>";
 				      ?>
 				      <a href="#!" type="button" class="secondary-content dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true"><i class="fa fa-ellipsis-v fa-2x"></i></a>
 					      <ul class="dropdown-menu pull-right" style="top: 10px;">
@@ -37,7 +37,7 @@
 		<div class="col-lg-4" style="margin-top: 20px">
 			<h3 class="light">Serapan Dana</h3>
 			<?php
-				$sql="SELECT * from ukm";
+				$sql="SELECT * from ukm where id = $sukm";
 				$q=mysql_query($sql) or die(mysql_error());
 				while ($row=mysql_fetch_array($q)){
 					$periode=hasil("SELECT max(periode) from transaksi");
@@ -54,7 +54,6 @@
                 </div>
 			</div>
 			<div class="card-panel" style="margin-top: -1rem; padding: 10px;">
-			<a title="Tambah User" href="modul.php?isi=user-tambah" class="btn btn-circle"><i class="fa fa-plus fa-small"></i></a>
 			<?php
 				$sql2="SELECT * from user where ukm = $row[id]";
 				$q2=mysql_query($sql2) or die(mysql_error());
@@ -67,6 +66,19 @@
 			</div>
 			<?php } //fetch row ukm ?>
 			<!-- card panel -->
+
+			<div class="card-panel teal white-text">
+				<span class="lead">Anggaran</span>
+				<span class="lead pull-right">Rp.<?php echo number_format($ang, 0, ',', '.'); ?></span>
+			</div>
+			<div class="card-panel red darken-1 white-text">
+				<span class="lead">Pengeluaran</span>
+				<span class="lead pull-right">Rp.<?php echo number_format($pengel, 0, ',', '.');?></span>
+			</div>
+			<div class="card-panel indigo white-text">
+				<span class="lead">Sisa</span>
+				<span class="lead pull-right">Rp.<?php echo number_format($ang-$pengel, 0, ',', '.'); ?></span>
+			</div>
 		</div>
 		<div class="col-lg-3" style="margin-top: 20px">
 			<h3 class="light">Bantuan</h3>
@@ -76,16 +88,6 @@
 		      <div class="collapsible-body"><p class="text-justify">Jika anda menggunakan Smartphone/Tablet aktifkan Mobile view untuk <strong class="teal-text"> meringkas tampilan</strong>. Tombol Mobile view berada di bagian bawah menu utama</p></div>
 		    </li>
 		    <li>
-		      <div class="collapsible-header"><i class="fa fa-dollar"></i>UKM/Budget</div>
-		      <div class="collapsible-body"><p class="text-justify">Bagian UKM/Budget berfungsi untuk <strong style="color: #009688">menambah anggaran UKM atau kegiatan</strong>  lain, seperti porsenigama. <br>
-		      Setiap UKM/Budget memiliki minimal satu user penanggung jawab yang dapat dibuat pada bagian User. <br>
-		      Periode UKM/Budget ditambah setiap <strong style="color: #009688"> dilakukan pengajuan dana.</strong> Periode lama dapat dihapus</p></div>
-		    </li>
-		    <li>
-		      <div class="collapsible-header"><i class="fa fa-user"></i>User</div>
-		      <div class="collapsible-body"><p>User adalah <strong style="color: #009688">penanggung jawab atas penggunaan dana</strong> dari masing-masing UKM. User dapat login dan memasukkan laporan penggunaan dana. Admin dapat membuat  <strong style="color: #009688">user penanggung jawab UKM maupun user Administrator</strong> SISAT</p></div>
-		    </li>
-		    <li>
 		      <div class="collapsible-header"><i class="fa fa-shopping-cart"></i>Laporan</div>
 		      <div class="collapsible-body"><p>Semua transaksi penggunaan dana UKM ditampilkan di bagian Laporan. Admin dapat menyeleksi transaksi berdasar <strong style="color: #009688">UKM, Keperluan, dan Periode</strong>. Laporan dapat <strong style="color: #009688">diekspor menjadi file Excel.</strong></p></div>
 		    </li>
@@ -93,3 +95,9 @@
 		</div>
 	
 	</div>
+
+	<div class="fixed-action-btn" style="bottom: 20px; right: 2%;">
+    <a href="modul.php?isi=transaksi-tambah" class="btn-floating btn-large teal" title="Tambah Transaksi">
+      <i class="fa fa-plus"></i>
+    </a>
+</div>

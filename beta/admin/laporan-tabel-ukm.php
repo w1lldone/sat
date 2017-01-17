@@ -1,23 +1,17 @@
 <?php
     $periode=hasil("SELECT max(periode) from anggaran"); 
     $per='<>0';
-    $uk='<>0';
     $kep='<>0';
-    $sql="SELECT * from transaksi where periode = $periode";
-    $ukm="";
+    $sql="SELECT * from transaksi where ukm = $sukm and periode = $periode";
 if (!empty($_POST['periode'])) {
     $periode="$_POST[periode]";
     $per="<>$_POST[periode]";
     $keperluan="";
-    if ($_POST['ukm']!='') {
-        $ukm="=$_POST[ukm]";
-        $uk="<>$_POST[ukm]";
-    }
     if ($_POST['keperluan']!='') {
         $keperluan="=$_POST[keperluan]";
         $kep="<>$_POST[keperluan]";
     }
-    $sql="SELECT * from transaksi where periode = $periode and ukm $ukm and keperluan $keperluan";
+    $sql="SELECT * from transaksi where periode = $periode and ukm = $sukm and keperluan $keperluan";
  }
 ?>
 <div class="row">
@@ -56,25 +50,6 @@ if (!empty($_POST['periode'])) {
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group input-group">
-                                <span class="input-group-addon"><i class="fa fa-dribbble"></i> </span>                                
-                                <select class="form-control" name="ukm" id="ukm">
-                                    <?php
-                                    $sql2="SELECT * from ukm where id $uk";
-                                    $q2=mysql_query($sql2) or die(mysql_error());
-                                    if ($_POST['ukm']!="") {
-                                        $val=hasil("SELECT nama from ukm where id = $_POST[ukm]");
-                                        echo "<option value='$_POST[ukm]'>$val</option>";
-                                    }
-                                    echo "<option value=''>All</option>";
-                                    while ($row2=mysql_fetch_array($q2)){
-                                        echo "<option value='$row2[id]'>$row2[nama]</option>";
-                                    }    
-                                    ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="form-group input-group">
                                 <span class="input-group-addon"><i class="fa fa-shopping-cart"></i> </span> 
                                 <select class="form-control" name="keperluan" id="keperluan">
                                     <?php
@@ -94,9 +69,9 @@ if (!empty($_POST['periode'])) {
                         </div>
                         <div class="col-lg-3">
                             <button class="btn waves-effect waves-light" type="submit" name="action" title="Submit"><i class="fa fa-send"></i></button>
-                            </form> 
                             <a class="btn yellow darken-4 waves-effect waves-light" href="modul.php?isi=laporan-tabel" title="Reset"><i class="fa fa-repeat"></i></a>
                         </div>    
+                    </form> 
                 </div>      
                 <div class="dataTable_wrapper">
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -113,12 +88,12 @@ if (!empty($_POST['periode'])) {
                         <?php
                               $q=mysql_query($sql) or die(mysql_error());
                               while ($row=mysql_fetch_array($q)){
-                                $namaukm=hasil("SELECT nama from ukm where id = $row[ukm]");
+                                $ukm=hasil("SELECT nama from ukm where id = $row[ukm]");
                                 $keperluan=hasil("SELECT keperluan from keperluan where id = $row[keperluan]");
                                 echo"<tr class='odd gradeX'>";
                                 echo"<td>$row[tanggal]</td>";
-                                echo"<td>$namaukm</td>";
-                                echo"<td>Rp.".number_format($row['jumlah'], 0, ',', '.')."</td>";
+                                echo"<td>$ukm</td>";
+                                echo"<td>Rp. ".number_format($row['jumlah'], 0, ',', '.'). "</td>";
                                 echo"<td>$keperluan</td>";
                                 ?>
                                 <!-- Split button --> 
@@ -138,7 +113,7 @@ if (!empty($_POST['periode'])) {
                     </table>
                     <form action="urlAjax.php?act=export-excel" method="POST">
                                 <input type="hidden" name="periode" value="<?php echo $periode; ?>">
-                                <input type="hidden" name="ukm" value="<?php echo $ukm; ?>">
+                                <input type="hidden" name="ukm" value='<?php echo "=$sukm"; ?>'>
                                 <button class="btn blue waves-effect waves-light" type="submit"><i class="fa fa-file-excel-o" title="Export"></i> Ekspor Tabel</button>
                     </form>
                 </div>

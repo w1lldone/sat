@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['pref']=='admin') {
+if ($_SESSION['pref']=='admin' || $_SESSION['pref']=='ukm') {
 
 	include 'lib/ImageResize.php';
 	include 'config.php';
@@ -138,11 +138,20 @@ if ($_SESSION['pref']=='admin') {
 			username = '$_POST[username]'
 			where username = '$_POST[usern]'
 			");
+
+			$_SESSION['username']=$_POST['username'];
 		}
 		
+		if ($_SESSION['pref']=='ukm' ) {
+			echo "<script>window.alert('User Berhasil diedit');
+		window.location=('modul.php?isi=admin-home')</script>";
+		}
 
-		echo "<script>window.alert('User Berhasil diedit');
+		if ($_SESSION['pref']=='admin' ) {
+			echo "<script>window.alert('User Berhasil diedit');
 		window.location=('modul.php?isi=user-tabel')</script>";
+		}
+		
 		
 	} //edit user
 
@@ -278,12 +287,12 @@ if ($_SESSION['pref']=='admin') {
 					$image = new \Eventviva\ImageResize("../img/nota/$nama");
 
 					if ($imageFileType == "jpg" || $imageFileType == "jpeg") {
-						$image->quality_jpg = 50;
+						$image->quality_jpg = 70;
 					} elseif ($imageFileType == "png") {
-						$image->quality_png = 5;
+						$image->quality_png = 7;
 					}
 
-					$image->resizeToHeight(300);
+					$image->resizeToHeight(500);
 					$image->save("../img/nota/".$nama);
 					$nota="img/nota/".$nama;
 					$notalama=hasil("SELECT nota from transaksi where id = $_POST[id]");
@@ -318,6 +327,9 @@ if ($_SESSION['pref']=='admin') {
 		window.location=('modul.php?isi=laporan-tabel')</script>";
 	}	
 
+} // Pref admin
+
+// akttifkan atau matikan mobile view
 	if ($_GET['act']=='toggle') {
 		if (isset($_POST['toggle'])) {
 			$name='mobileview';
@@ -331,5 +343,63 @@ if ($_SESSION['pref']=='admin') {
 		}
 	}
 
-} // session start	
-	?>
+	if ($_GET['act']=='tambah_kegiatan') {
+		$loc="img/kegiatan/";
+		$target_dir="../".$loc;
+		$files=$_FILES;
+		$upload=uploadFile($files, $target_dir, $loc);
+		
+		if ($upload['status']==1) {
+		mysql_query("INSERT INTO kegiatan(tanggal, judul, keterangan, gambar)
+					VALUES(
+					'$_POST[tanggal]',
+					'$_POST[judul]',
+					'$_POST[keterangan]',
+					'$upload[nama]')");
+		echo "<script>window.alert('Tambah Kegiatan berhasil');
+				window.location=('modul.php?isi=kegiatan-tabel')</script>";	
+		}
+	} // tambah kegiatan
+
+
+	if ($_GET['act']=='edit_kegiatan') {
+		mysql_query("UPDATE kegiatan set
+			judul='$_POST[judul]',
+			keterangan='$_POST[keterangan]',
+			tanggal='$_POST[tanggal]' 
+			where id=$_POST[id]");
+
+		if (!empty($_FILES["fileToUpload"]["name"])) {
+			$loc="img/kegiatan/";
+			$target_dir="../".$loc;
+			$gbrlama=hasil("SELECT gambar from kegiatan where id = $_POST[id]");
+			$files=$_FILES;
+
+			$upload=uploadFile($files, $target_dir, $loc);
+
+			if ($upload['status']==1) {
+				mysql_query("
+					UPDATE kegiatan set 
+					gambar = '$upload[nama]'
+					where id = $_POST[id]
+					");
+			}			
+
+			unlink("../$gbrlama");
+		}
+
+		echo "<script>window.alert('Edit Kegiatan berhasil');
+			window.location=('modul.php?isi=kegiatan-tabel')</script>";	
+	} // edit kegiatan
+
+	if ($_GET['act']='hapus_kegiatan') {
+		$gambar=hasil("SELECT gambar from kegiatan where id = $_GET[id]");
+		mysql_query("
+			DELETE from kegiatan
+			where id = $_GET[id]
+			");
+		unlink("../$gambar")	;
+		echo "<script>window.alert('Hapus Kegiatan berhasil');
+			window.location=('modul.php?isi=kegiatan-tabel')</script>";	
+	}
+?>
