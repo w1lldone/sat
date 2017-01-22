@@ -239,7 +239,7 @@
           <div class="col l7 m7 s12">
             <ul class="collection z-depth-1">
             <?php
-              $sql="SELECT * from ukm";
+              $sql="SELECT * from ukm order by nama asc";
               $q=mysql_query($sql) or die(mysql_error());
               while ($row=mysql_fetch_array($q)){
                 $periode=hasil("SELECT max(periode) from transaksi");
