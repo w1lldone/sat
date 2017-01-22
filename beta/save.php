@@ -392,7 +392,7 @@ if ($_SESSION['pref']=='admin' || $_SESSION['pref']=='ukm') {
 			window.location=('modul.php?isi=kegiatan-tabel')</script>";	
 	} // edit kegiatan
 
-	if ($_GET['act']='hapus_kegiatan') {
+	if ($_GET['act']=='hapus_kegiatan') {
 		$gambar=hasil("SELECT gambar from kegiatan where id = $_GET[id]");
 		mysql_query("
 			DELETE from kegiatan
@@ -401,5 +401,65 @@ if ($_SESSION['pref']=='admin' || $_SESSION['pref']=='ukm') {
 		unlink("../$gambar")	;
 		echo "<script>window.alert('Hapus Kegiatan berhasil');
 			window.location=('modul.php?isi=kegiatan-tabel')</script>";	
+	}
+
+	if ($_GET['act']=='tambah_divisi') {
+		mysql_query("INSERT INTO divisi(jabatan, nama, line, email, jadwal)
+					VALUES(
+					'$_POST[jabatan]',
+					'$_POST[nama]',
+					'$_POST[line]',
+					'$_POST[email]',
+					'$_POST[jadwal]')");
+		echo "<script>window.alert('Tambah Pengurus berhasil');
+				window.location=('modul.php?isi=pengurus')</script>";	
+	}
+
+	if ($_GET['act']=='edit_p_inti') {
+
+		if (!empty($_FILES['fileToUpload']['name'])) {
+			$loc="img/foto/";
+			$target_dir="../".$loc;
+			$gbrlama=hasil("SELECT foto from pengurus where id = $_POST[id]");
+			$files=$_FILES;
+
+			$upload=uploadFile($files, $target_dir, $loc);
+
+			if ($upload['status']==1) {
+				mysql_query("
+					UPDATE pengurus set 
+					foto = '$upload[nama]'
+					where id = $_POST[id]
+					");
+			}			
+
+			unlink("../$gbrlama");
+		}
+
+		mysql_query("
+			UPDATE pengurus	set 
+			nama = '$_POST[nama]',
+			line =  '$_POST[line]',
+			email =  '$_POST[email]'
+			where id = $_POST[id]
+			");
+
+		echo "<script>window.alert('edit Pengurus berhasil');
+				window.location=('modul.php?isi=pengurus')</script>";
+	}
+
+	if ($_GET['act']=='edit_divisi') {
+		mysql_query("
+			UPDATE divisi set 
+			jabatan = '$_POST[jabatan]',
+			nama = '$_POST[nama]',
+			line =  '$_POST[line]',
+			jadwal =  '$_POST[jadwal]',
+			email =  '$_POST[email]'
+			where id = $_POST[id]
+			");
+
+		echo "<script>window.alert('edit Pengurus berhasil');
+				window.location=('modul.php?isi=pengurus')</script>";
 	}
 ?>

@@ -71,6 +71,14 @@
 			include "admin/kegiatan-tambah.php";
 		}
 
+		if($_GET['isi']=="pengurus"){
+			include "admin/pengurus.php";
+		}
+
+		if($_GET['isi']=="pengurus-tambah"){
+			include "admin/pengurus-tambah.php";
+		}
+
 	} // level admin
 
 	//------------------------------------------------------------------------------------------------------------------ 

@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!isset($_SESSION['nama'])) {
+    header('location:login.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -386,10 +389,17 @@ session_start();
       })
     </script>
 
-    <!-- Export to excel -->
+    <!-- enable form kepengurusan -->
     <script>
-    function ExportExcel() {
-        window.location('urlAjax.php?act=export-excel&periode=2017&ukm=3')
+    function EnableForm(id) {
+        $('#'+id).removeAttr('disabled');
+    }
+    </script>
+
+    <script>
+    function EnableForm2(field, butt) {
+        $('#'+field).removeAttr('disabled');
+         $('#'+butt).attr('style',"opacity: 1;");
     }
     </script>
 </body>

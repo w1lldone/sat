@@ -56,7 +56,7 @@ if (isset($_POST['periode'])) {
 					</ul>
 				</div>
 				<div class="card-action text-center teal">
-					<a href="modul.php?isi=tambah-ukm" class="btn btn-circle white"><i class="fa fa-plus teal-text"></i> </a>
+					<a href="modul.php?isi=ukm-tambah" class="btn btn-circle white"><i class="fa fa-plus teal-text"></i> </a>
 				</div>
 			</div>			
 		</div>

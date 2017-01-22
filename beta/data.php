@@ -47,7 +47,7 @@
 				$nama=basename( $files["fileToUpload"]["name"]);
 				$hasil = array('status' => $uploadOk, 'nama' => "$loc"."$nama");
 			} else {
-				$hasil = array('status' => 0);
+				$hasil = array('status' => 0, 'ket' => $ket);
 			}
 		}
 		return $hasil;

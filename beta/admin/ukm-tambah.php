@@ -21,14 +21,14 @@
                                 <input type="text" class="form-control" name="nama">
                             </div>
                             <div class="row">
-                                <div class="col-xs-6">
+                                <div class="col-xs-12 col-lg-6">
                                     <label>Anggaran</label>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon">Rp</span>
                                         <input type="text" class="form-control" name="anggaran">
                                     </div>
                                 </div>
-                                <div class="col-xs-6">    
+                                <div class="col-xs-12 col-lg-6">    
                                     <label>Periode</label>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>                   

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 11 Jan 2017 pada 06.49
+-- Generation Time: 22 Jan 2017 pada 14.58
 -- Versi Server: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `anggaran` (
   `periode` int(4) NOT NULL,
   `ukm` int(6) NOT NULL,
   `anggaran` int(10) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `anggaran`
@@ -43,6 +43,56 @@ INSERT INTO `anggaran` (`id`, `periode`, `ukm`, `anggaran`) VALUES
 (15, 2017, 5, 5000000),
 (16, 2017, 6, 2500000),
 (17, 2017, 7, 5000000);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `divisi`
+--
+
+CREATE TABLE IF NOT EXISTS `divisi` (
+  `id` int(11) NOT NULL,
+  `jabatan` varchar(50) DEFAULT NULL,
+  `nama` varchar(50) DEFAULT NULL,
+  `line` varchar(20) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `jadwal` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `divisi`
+--
+
+INSERT INTO `divisi` (`id`, `jabatan`, `nama`, `line`, `email`, `jadwal`) VALUES
+(3, 'Vortech', 'Nama Ketua', 'id.line', 'email@gmail.com', 'hari dan hari jam 00.00'),
+(5, 'ABC', 'Nama Ketua', 'id.line', 'email@gmail.com', 'hari dan hari jam 00.00'),
+(6, 'Traktor FC', 'Nama Ketua', 'id.line', 'alamat@gmail.com', 'hari dan hari jam 00.00'),
+(7, 'Agritech Baller', 'Nama Ketua', 'id.line', 'alamat@gmail.com', 'hari dan hari jam 12.12');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `kegiatan`
+--
+
+CREATE TABLE IF NOT EXISTS `kegiatan` (
+  `id` int(6) NOT NULL,
+  `tanggal` varchar(10) DEFAULT NULL,
+  `judul` varchar(50) DEFAULT NULL,
+  `keterangan` varchar(100) DEFAULT NULL,
+  `gambar` varchar(300) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `kegiatan`
+--
+
+INSERT INTO `kegiatan` (`id`, `tanggal`, `judul`, `keterangan`, `gambar`) VALUES
+(4, '2017-01-22', 'Latihan Rutin Vortech', 'Latihan Rutin bola voli di Lapangan Pascasarjana', 'img/kegiatan/latihan2.jpg'),
+(5, '2017-01-22', 'Latihan voli', 'Latihan Rutin bola voli di Lapangan Pascasarjana', 'img/kegiatan/latihan3.jpg'),
+(6, '2017-01-22', 'Latihan Vortech', 'Latihan Rutin bola voli di Lapangan Pascasarjana', 'img/kegiatan/latihan4.jpg'),
+(7, '2017-01-22', 'Latihan di Pascasarjana', 'Latihan Rutin bola voli di Lapangan Pascasarjana', 'img/kegiatan/latihan5.jpg'),
+(8, '2017-01-22', 'Latihan Porsenigama', 'Latihan Rutin bola voli di Lapangan Pascasarjana', 'img/kegiatan/latihan6.jpg');
 
 -- --------------------------------------------------------
 
@@ -70,20 +120,43 @@ INSERT INTO `keperluan` (`id`, `keperluan`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `pengurus`
+--
+
+CREATE TABLE IF NOT EXISTS `pengurus` (
+  `id` int(11) NOT NULL,
+  `jabatan` varchar(50) DEFAULT NULL,
+  `nama` varchar(50) DEFAULT NULL,
+  `line` varchar(20) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `foto` varchar(300) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `pengurus`
+--
+
+INSERT INTO `pengurus` (`id`, `jabatan`, `nama`, `line`, `email`, `foto`) VALUES
+(1, 'Ketua SAT', 'Rivan Dwias Kurniawan', 'id.line', 'email@gmail.com', 'img/foto/ketua.jpg'),
+(2, 'Sekjen SAT', 'Anggraito Agung', 'id.line', 'email@gmail.com', 'img/foto/sekjen.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `transaksi`
 --
 
 CREATE TABLE IF NOT EXISTS `transaksi` (
   `id` int(6) NOT NULL,
-  `ukm` int(6) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `periode` int(4) NOT NULL,
-  `tanggal` varchar(10) NOT NULL,
-  `jumlah` int(10) NOT NULL,
-  `keperluan` int(6) NOT NULL,
+  `ukm` int(6) DEFAULT NULL,
+  `username` varchar(50) DEFAULT NULL,
+  `periode` int(4) DEFAULT NULL,
+  `tanggal` varchar(10) DEFAULT NULL,
+  `jumlah` int(10) DEFAULT NULL,
+  `keperluan` int(6) DEFAULT NULL,
   `nota` varchar(300) DEFAULT NULL,
   `keterangan` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `transaksi`
@@ -98,7 +171,11 @@ INSERT INTO `transaksi` (`id`, `ukm`, `username`, `periode`, `tanggal`, `jumlah`
 (7, 5, 'admin', 2017, '2017-01-10', 1000000, 2, 'img/nota/Wildan biru.jpg', 'Sewa lapangan'),
 (8, 6, 'admin', 2017, '2017-01-08', 500000, 2, 'img/nota/seth.jpg', 'Sewa lapangan basket'),
 (9, 5, 'admin', 2017, '2017-01-10', 400000, 1, 'img/nota/Eka Pandu Winata 20150218_130206.jpg', 'Beli Shuttlecock'),
-(14, 5, 'admin', 2017, '2017-01-31', 40000, 1, 'img/nota/slither 25k.png', 'tes');
+(14, 5, 'admin', 2017, '2017-01-31', 40000, 1, 'img/nota/slither 25k.png', 'tes'),
+(15, 3, 'admin', 2017, '2017-01-30', 55000, 6, 'img/nota/1484115218627260262615.jpg', ''),
+(16, 3, 'wildan', 2017, '2017-01-14', 130000, 1, 'img/nota/Grumpy_Cat_Meme_Pictures_humor_funny_cats____r_1366x768.jpg', 'Coba input ukm'),
+(17, 7, 'admin', 2017, '2017-01-24', 3300000, 6, 'img/nota/nuclear_mushroom_wallpaper.jpg', 'Pendaftaran peserta porsenigama'),
+(19, 6, NULL, 2017, '2017-01-13', 500000, 1, 'img/nota/Is_this_you_by_bushidohacks.jpg', 'beli bola');
 
 -- --------------------------------------------------------
 
@@ -143,10 +220,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`username`, `pass`, `nama`, `privilage`, `ukm`) VALUES
 ('admin', '21232f297a57a5a743894a0e4a801fc3', 'Raja', 'admin', NULL),
 ('agung', 'e59cd3ce33a68f536c19fedb82a7936f', 'Agung', 'ukm', 5),
-('andy.nov', 'da41bceff97b1cf96078ffb249b3d66e', 'Andy Novianto', 'ukm', 7),
 ('rivan', '708af01b0093065b9fa75aafba5a67d8', 'Rivan Dwi', 'ukm', 4),
-('Tomang', '900eb34d10f2dcf30489572217ac7ad3', 'Tomang', 'ukm', 6),
-('wildan.a', '7b22a6ba44f8ed83d131521fa9069a4f', 'Wildan Ainurrahman', 'ukm', 3);
+('wildan', 'af6b3aa8c3fcd651674359f500814679', 'Wildan Tok', 'ukm', 3),
+('zeus', '098ef03a15eaf14dfe66a596cf0eb510', 'zeus', 'ukm', 6);
 
 --
 -- Indexes for dumped tables
@@ -160,9 +236,27 @@ ALTER TABLE `anggaran`
   ADD KEY `idukm` (`ukm`);
 
 --
+-- Indexes for table `divisi`
+--
+ALTER TABLE `divisi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `kegiatan`
+--
+ALTER TABLE `kegiatan`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `keperluan`
 --
 ALTER TABLE `keperluan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pengurus`
+--
+ALTER TABLE `pengurus`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -195,17 +289,32 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `anggaran`
 --
 ALTER TABLE `anggaran`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+--
+-- AUTO_INCREMENT for table `divisi`
+--
+ALTER TABLE `divisi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `kegiatan`
+--
+ALTER TABLE `kegiatan`
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `keperluan`
 --
 ALTER TABLE `keperluan`
   MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
+-- AUTO_INCREMENT for table `pengurus`
+--
+ALTER TABLE `pengurus`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `ukm`
 --
@@ -227,7 +336,7 @@ ALTER TABLE `anggaran`
 ALTER TABLE `transaksi`
   ADD CONSTRAINT `idukm.transaksi` FOREIGN KEY (`ukm`) REFERENCES `ukm` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `keperluan.transaksi` FOREIGN KEY (`keperluan`) REFERENCES `keperluan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `username.transaksi` FOREIGN KEY (`username`) REFERENCES `user` (`username`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `username.transaksi` FOREIGN KEY (`username`) REFERENCES `user` (`username`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `user`
