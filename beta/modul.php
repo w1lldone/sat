@@ -305,6 +305,7 @@ if (!isset($_SESSION['nama'])) {
             format: 'yyyy-mm-dd',
             container: container,
             todayHighlight: true,
+            disableTouchKeyboard: true,
             autoclose: true,
         };
         date_input.datepicker(options);

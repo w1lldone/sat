@@ -2,7 +2,6 @@
 session_start();
 if ($_SESSION['pref']=='admin' || $_SESSION['pref']=='ukm') {
 
-	include 'lib/ImageResize.php';
 	include 'config.php';
 	include 'data.php';
 
@@ -165,156 +164,64 @@ if ($_SESSION['pref']=='admin' || $_SESSION['pref']=='ukm') {
 	}
 
 	if ($_GET['act']=='tambah_transaksi') {
-		$target_dir = "../img/nota/";
-		$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-		$uploadOk = 1;
-		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-	// Check if image file is a actual image or fake image
-		if(isset($_POST["submit"])) {
-			$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-			if($check !== false) {
-				echo "File is an image - " . $check["mime"] . ".";
-				$uploadOk = 1;
-			} else {
-				echo "File is not an image.";
-				$uploadOk = 0;
-			}
-		}
-	// Check if file already exists
-		if (file_exists($target_file)) {
-			echo "File sudah ada, mohon ganti nama file";
-			$uploadOk = 0;
+
+		$loc="img/nota/";
+		$target_dir="../".$loc;
+		$files=$_FILES;
+		
+		$upload=uploadFile($files, $target_dir, $loc);
+
+		if ($upload['status']==1) {
+			mysql_query("INSERT INTO transaksi(ukm, username, periode, tanggal, jumlah, keperluan, nota, keterangan)
+			VALUES(
+			'$_POST[ukm]',
+			'$_POST[username]',
+			$_POST[periode],
+			'$_POST[tanggal]',
+			$_POST[jumlah],
+			'$_POST[keperluan]',
+			'$upload[nama]',
+			'$_POST[keterangan]')");
+			echo "<script>window.alert('Tambah transaksi berhasil');
+			window.location=('modul.php?isi=laporan-tabel')</script>";
 		}
 
-	// Allow certain file formats
-		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-			&& $imageFileType != "gif" ) {
-			echo "Hanya file gambar yg boleh diupload";
-		$uploadOk = 0;
-		}
-		// Check if $uploadOk is set to 0 by an error
-		if ($uploadOk == 0) {
-			echo "Maaf file tidak terupload.";
-		// if everything is ok, try to upload file
-		} else {
-			if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-				$nama=basename( $_FILES["fileToUpload"]["name"]);
-				// $nota="img/nota/".$nama;
-				$image = new \Eventviva\ImageResize("../img/nota/$nama");
-
-				if ($imageFileType == "jpg" || $imageFileType == "jpeg") {
-					$image->quality_jpg = 50;
-				} elseif ($imageFileType == "png") {
-					$image->quality_png = 5;
-				}
-
-				$image->resizeToHeight(300);
-				$image->save("../img/nota/edit_".$nama);
-				$nota="img/nota/edit_".$nama;
-				unlink("../img/nota/".$nama);
-
-				mysql_query("INSERT INTO transaksi(ukm, username, periode, tanggal, jumlah, keperluan, nota, keterangan)
-					VALUES(
-					'$_POST[ukm]',
-					'$_POST[username]',
-					$_POST[periode],
-					'$_POST[tanggal]',
-					$_POST[jumlah],
-					'$_POST[keperluan]',
-					'$nota',
-					'$_POST[keterangan]')");
-				echo "<script>window.alert('Tambah transaksi berhasil');
-				window.location=('modul.php?isi=laporan-tabel')</script>";
-			} else {
-				echo "Sorry, there was an error uploading your file.";
-			}
-		}
 	} // tambah transaksi
 
 	if ($_GET['act']=='edit_transaksi') {
 
-		if (empty($_FILES["fileToUpload"]["name"])) {
-			mysql_query("UPDATE transaksi set
-				ukm='$_POST[ukm]',
-				username='$_POST[username]',
-				periode=$_POST[periode],
-				tanggal='$_POST[tanggal]',
-				jumlah=$_POST[jumlah],
-				keperluan=$_POST[keperluan],
-				keterangan='$_POST[keterangan]' where id=$_POST[id]");
-			echo "<script>window.alert('Transaksi diperbarui');
-			window.location=('modul.php?isi=laporan-tabel')</script>";
+		mysql_query("UPDATE transaksi set
+			ukm='$_POST[ukm]',
+			username='$_POST[username]',
+			periode=$_POST[periode],
+			tanggal='$_POST[tanggal]',
+			jumlah=$_POST[jumlah],
+			keperluan=$_POST[keperluan],
+			keterangan='$_POST[keterangan]' where id=$_POST[id]");
 
-		} else{
-			$target_dir = "../img/nota/";
-			$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-			$uploadOk = 1;
-			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-		// Check if image file is a actual image or fake image
-			if(isset($_POST["submit"])) {
-				$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-				if($check !== false) {
-					echo "File is an image - " . $check["mime"] . ".";
-					$uploadOk = 1;
-				} else {
-					echo "File is not an image.";
-					$uploadOk = 0;
-				}
-			}
-		// Check if file already exists
-			if (file_exists($target_file)) {
-				echo "File sudah ada, mohon ganti nama file";
-				$uploadOk = 0;
-			}
-		// // Check file size
-		// 	if ($_FILES["fileToUpload"]["size"] > 500000) {
-		// 		echo "Ukuran File terlalu besar";
-		// 		$uploadOk = 0;
-		// 	}
-		// Allow certain file formats
-			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-				&& $imageFileType != "gif" ) {
-				echo "Hanya file gambar yg boleh diupload";
-			$uploadOk = 0;
-			}
-			// Check if $uploadOk is set to 0 by an error
-			if ($uploadOk == 0) {
-				echo "Maaf file tidak terupload.";
-			// if everything is ok, try to upload file
-			} else {
-				if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-					$nama=basename( $_FILES["fileToUpload"]["name"]);
-					// $nota="img/nota/".$nama;
-					$image = new \Eventviva\ImageResize("../img/nota/$nama");
 
-					if ($imageFileType == "jpg" || $imageFileType == "jpeg") {
-						$image->quality_jpg = 70;
-					} elseif ($imageFileType == "png") {
-						$image->quality_png = 7;
-					}
 
-					$image->resizeToHeight(500);
-					$image->save("../img/nota/".$nama);
-					$nota="img/nota/".$nama;
-					$notalama=hasil("SELECT nota from transaksi where id = $_POST[id]");
-					mysql_query("UPDATE transaksi set
-						ukm='$_POST[ukm]',
-						username='$_POST[username]',
-						periode=$_POST[periode],
-						tanggal='$_POST[tanggal]',
-						jumlah=$_POST[jumlah],
-						keperluan=$_POST[keperluan],
-						nota='$nota',
-						keterangan='$_POST[keterangan]' where id=$_POST[id]");
-					unlink("../$notalama");
-					echo "<script>window.alert('Transaksi diperbarui');
-					window.location=('modul.php?isi=laporan-tabel')</script>";
-				} else {
-					echo "Sorry, there was an error uploading your file.";
-				}
-			}
+		echo "<script>window.alert('Transaksi diperbarui');
+		window.location=('modul.php?isi=laporan-tabel')</script>";
 
-		} // jika ganti nota
+		if (!empty($_FILES["fileToUpload"]["name"])) {
+			$loc="img/nota/";
+			$target_dir="../".$loc;
+			$gbrlama=hasil("SELECT nota from transaksi where id = $_POST[id]");
+			$files=$_FILES;
+
+			$upload=uploadFile($files, $target_dir, $loc);
+
+			if ($upload['status']==1) {
+				mysql_query("
+					UPDATE transaksi set 
+					nota = '$upload[nama]'
+					where id = $_POST[id]
+					");
+			}			
+
+			unlink("../$gbrlama");
+		}	
 			
 	} // edit transaksi
 
@@ -348,6 +255,7 @@ if ($_SESSION['pref']=='admin' || $_SESSION['pref']=='ukm') {
 		$loc="img/kegiatan/";
 		$target_dir="../".$loc;
 		$files=$_FILES;
+
 		$upload=uploadFile($files, $target_dir, $loc);
 		
 		if ($upload['status']==1) {
