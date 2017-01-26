@@ -209,8 +209,9 @@ if ($_SESSION['pref']=='admin' || $_SESSION['pref']=='ukm') {
 				}
 
 				$image->resizeToHeight(300);
-				$image->save("../img/nota/".$nama);
-				$nota="img/nota/".$nama;
+				$image->save("../img/nota/edit_".$nama);
+				$nota="img/nota/edit_".$nama;
+				unlink("../img/nota/".$nama);
 
 				mysql_query("INSERT INTO transaksi(ukm, username, periode, tanggal, jumlah, keperluan, nota, keterangan)
 					VALUES(

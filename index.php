@@ -30,7 +30,7 @@
 <body class="grey lighten-4">
 
   <div class="navbar-fixed">
-    <nav class="teal" role="navigation">
+    <nav class="green lighten-1" role="navigation">
       <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo left">SAT</a>
         <!-- <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a> -->
         <ul class="right hide-on-small-only">
@@ -57,8 +57,8 @@
 
     <div class="section scrollspy no-pad-bot" id="index-banner">
       <div class="container">
-        <br><br>
-        <h1 class="header center teal-text">Sports of Agriculture Technology</h1>
+        <br>
+        <h1 class="header center red-text">Sports of Agriculture Technology</h1>
         <div class="row center">
          <img class="responsive-img" src="img/logo/logo-besar-sat.png">
          <h5 class="header col s12 light">Unit kegiatan yang menjadi wadah bagi mahasiswa Fakultas Teknologi Pertanian UGM untuk menyalurkan minat dan bakat dalam bidang olahraga</h5>
@@ -266,9 +266,9 @@
     <div class="container">
       <div class="row">
         <div class="col l5 s12">
-          <h5 class="white-text">Sports of Agriculture Technolgy</h5>
+          <h5 class="white-text">Sports of Agriculture Technology</h5>
           <img src="img/logo/sat-polos.png" width="150">
-          <p class="grey-text text-lighten-4">Fakultas Teknologi Pertanian UGM<br>Jl. Flora no.1 Bulaksumur Yogyakarta 55281</p>
+          <p class="grey-text text-lighten-4">Fakultas Teknologi Pertanian<br>Universitas Gadjah Mada<br>Jl. Flora no.1 Bulaksumur Yogyakarta 55281</p>
         </div>
         <div class="col l3 s12">
           <h5 class="white-text">Links</h5>
@@ -283,6 +283,8 @@
             <a href="#" class="btn-floating white"><i class="fa fa-instagram blue-grey-text"></i></a>
             <a href="#" class="btn-floating white"><i class="fa fa-facebook blue-grey-text"></i></a>
             <a href="#" class="btn-floating white"><i class="fa fa-twitter blue-grey-text"></i></a>
+            <a href="#" class="btn-floating white"><i class="fa fa-youtube blue-grey-text"></i></a>
+            <a href="#" class="btn-floating white"><i class="fa fa-wechat blue-grey-text"></i></a>
         </div>
       </div>
     </div>
