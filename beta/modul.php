@@ -119,7 +119,7 @@ if (!isset($_SESSION['nama'])) {
                         <a href="modul.php?isi=admin-home"><i class="fa fa-home fa-fw"></i> Home</a>
                     </li> 
                     <li>
-						<a href="modul.php?isi=ukm-tabel"><i class="fa fa-usd fa-fw"></i> UKM/Budget</a>
+						<a href="modul.php?isi=ukm-tabel"><i class="fa fa-usd fa-fw"></i> Divisi/Budget</a>
 					</li>                       
 					<li>
 						<a href="modul.php?isi=user-tabel"><i class="fa fa-user fa-fw"></i> User</a>

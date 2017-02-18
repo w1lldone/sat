@@ -37,7 +37,7 @@
 		<div class="col-lg-4" style="margin-top: 20px">
 			<h3 class="light">Serapan Dana</h3>
 			<?php
-				$sql="SELECT * from ukm";
+				$sql="SELECT * from ukm order by nama asc";
 				$q=mysql_query($sql) or die(mysql_error());
 				while ($row=mysql_fetch_array($q)){
 					$periode=hasil("SELECT max(periode) from transaksi");
@@ -76,10 +76,10 @@
 		      <div class="collapsible-body"><p class="text-justify">Jika anda menggunakan Smartphone/Tablet aktifkan Mobile view untuk <strong class="teal-text"> meringkas tampilan</strong>. Tombol Mobile view berada di bagian bawah menu utama</p></div>
 		    </li>
 		    <li>
-		      <div class="collapsible-header"><i class="fa fa-dollar"></i>UKM/Budget</div>
-		      <div class="collapsible-body"><p class="text-justify">Bagian UKM/Budget berfungsi untuk <strong style="color: #009688">menambah anggaran UKM atau kegiatan</strong>  lain, seperti porsenigama. <br>
-		      Setiap UKM/Budget memiliki minimal satu user penanggung jawab yang dapat dibuat pada bagian User. <br>
-		      Periode UKM/Budget ditambah setiap <strong style="color: #009688"> dilakukan pengajuan dana.</strong> Periode lama dapat dihapus</p></div>
+		      <div class="collapsible-header"><i class="fa fa-dollar"></i>Divisi/Budget</div>
+		      <div class="collapsible-body"><p class="text-justify">Bagian Divisi/Budget berfungsi untuk <strong style="color: #009688">menambah anggaran UKM atau kegiatan</strong>  lain, seperti porsenigama. <br>
+		      Setiap Divisi/Budget memiliki minimal satu user penanggung jawab yang dapat dibuat pada bagian User. <br>
+		      Periode Divisi/Budget ditambah setiap <strong style="color: #009688"> dilakukan pengajuan dana.</strong> Periode lama dapat dihapus</p></div>
 		    </li>
 		    <li>
 		      <div class="collapsible-header"><i class="fa fa-user"></i>User</div>

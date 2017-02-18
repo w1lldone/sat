@@ -6,7 +6,7 @@ $anggaran=hasil("SELECT anggaran FROM anggaran WHERE ukm = $id AND periode = $pe
 ?>
 <div class="row">
     <div class="col-lg-6 col-lg-offset-3">
-        <h1 class="page-header" style="color: black">Edit UKM/Budgeting</h1>
+        <h1 class="page-header" style="color: black">Edit Divisi/Budgeting</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -21,7 +21,7 @@ $anggaran=hasil("SELECT anggaran FROM anggaran WHERE ukm = $id AND periode = $pe
                 <div class="row">
                     <div class="col-lg-12">
                         <form method="post" role="form" action="save.php?act=edit_ukm" enctype="multipart/form-data">
-                            <label>Nama UKM/Budgeting</label>
+                            <label>Nama Divisi/Budgeting</label>
                             <div class="form-group input-group">
                                 <span class="input-group-addon"><i class="fa fa-group"></i></span>
                                 <input type="text" class="form-control" name="nama" value="<?php echo $ukm; ?>">

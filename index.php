@@ -14,7 +14,10 @@
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
-      <!-- Icons Font -->
+  <!-- favicon -->
+  <link rel="shortcut icon" type="image/png" href="img/logo/logo-sat-kotak.png"/>
+
+  <!-- Icons Font -->
   <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 
   <style type="text/css">
@@ -30,17 +33,11 @@
 <body class="grey lighten-4">
 
   <div class="navbar-fixed">
-    <nav class="green lighten-1" role="navigation">
+    <nav class="teal" role="navigation">
       <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo left">SAT</a>
         <!-- <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a> -->
         <ul class="right hide-on-small-only">
           <li><a href="#index-banner">Home</a></li>
-          <li><a href="#divisi">Divisi</a></li>
-          <li><a href="#kegiatan">Kegiatan</a></li>
-          <li><a href="#laporan">Laporan</a></li>
-        </ul>
-        <ul class="side-nav" id="mobile-demo">
-          <li><a href="index.php">Home</a></li>
           <li><a href="#divisi">Divisi</a></li>
           <li><a href="#kegiatan">Kegiatan</a></li>
           <li><a href="#laporan">Laporan</a></li>
@@ -215,7 +212,7 @@
               <li>
                 <img src="<?php echo $row['gambar']; ?>"> <!-- random image -->
                 <div class="caption left-align">
-                  <h3><?php echo $row['judul']; ?></h3>
+                  <h3><a style="color: white" href="<?php echo $row['link']; ?>"><?php echo $row['judul']; ?></a></h3>
                   <h5 class="light grey-text text-lighten-3"><?php echo $row['keterangan']; ?></h5>
                 </div>
               </li>
@@ -250,7 +247,7 @@
               <li class="collection-item avatar">
                 <a href="#"><i class="material-icons circle teal">shopping_basket</i></a> 
                 <span class="title">
-                  <?php echo $row['nama']; ?>
+                  <a class="modal-trigger" href="#det_trans" onclick="<?php echo 'detTrans('.$row['id'].')'; ?>"><?php echo $row['nama']; ?></a>
                 </span>
                 <p class="grey-text text-darken-1">Anggaran : Rp <?php echo number_format($ang,'0',',','.'); ?><br>Pengeluaran : Rp <?php echo number_format($pengel,'0',',','.') ?></p>
               </li>
@@ -261,19 +258,19 @@
       </div>
     </div>
   </div>
-
+  <?php include 'det_trans.php'; ?>  
   <footer class="page-footer blue-grey darken-1">
     <div class="container">
       <div class="row">
         <div class="col l5 s12">
           <h5 class="white-text">Sports of Agriculture Technology</h5>
           <img src="img/logo/sat-polos.png" width="150">
-          <p class="grey-text text-lighten-4">Fakultas Teknologi Pertanian<br>Universitas Gadjah Mada<br>Jl. Flora no.1 Bulaksumur Yogyakarta 55281</p>
+          <p class="grey-text text-lighten-4">Sekretariat SAT<br>Fakultas Teknologi Pertanian<br>Universitas Gadjah Mada<br>Jl. Flora no.1 Bulaksumur Yogyakarta 55281</p>
         </div>
         <div class="col l3 s12">
           <h5 class="white-text">Links</h5>
           <ul>
-              <li><a class="white-text" target="_blank" href="beta">Login</a></li>
+              <li><a class="white-text" target="_blank" href="beta">Sistem Informasi SAT</a></li>
               <li><a class="white-text" target="_blank" href="http://ugm.ac.id">Universitas Gadjah Mada</a></li>
               <li><a class="white-text" target="_blank" href="http://tp.ugm.ac.id">Fakultas Teknologi Pertanian</a></li>
             </ul>
@@ -332,6 +329,27 @@
       $('.scrollspy').scrollSpy();
     });
   </script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+  </script>
+
+  <script>
+    function detTrans(id) {
+        $.ajax({
+        url: "beta/urlAjax.php?act=det-trans",
+        data:'id='+id,
+        type: "POST",
+        success:function(data){
+            $("#isi_trans").html(data);
+        },
+        error:function (){}
+        });
+    }
+    </script>
 
 </body>
 </html>

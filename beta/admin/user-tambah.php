@@ -47,19 +47,19 @@
                                     <div class="form-group input-group">
                                         <span class="input-group-addon"><i class="fa fa-user-md"></i></span>
                                         <select class="form-control" name="kewenangan">
-                                            <option value="ukm">UKM</option>
+                                            <option value="ukm">Divisi</option>
                                             <option value="admin">Admin</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <label>UKM (Kosongkan jika admin)</label>
+                                    <label>Divisi (Kosongkan jika admin)</label>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon"><i class="fa fa-dribbble"></i></span>
                                         <select class="form-control" name="ukm">
-                                            <option value=""> </option>
+                                            <option value="0"></option>
                                             <?php
-                                                $sql2="SELECT * FROM ukm";
+                                                $sql2="SELECT * FROM ukm order by nama asc";
                                                 $q2=mysql_query($sql2) or die(mysql_error());
                                                 while ($row2=mysql_fetch_array($q2)){
                                                     echo "<option value='$row2[id]'>$row2[nama]</option>";

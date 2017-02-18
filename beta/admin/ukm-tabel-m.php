@@ -8,7 +8,7 @@ if (isset($_POST['periode'])) {
 	<div class="col-lg-5 col-lg-offset-3" style="margin-top: 20px">
 		<div class="card ">
 			<div class="card-content">
-			<span class="card-title">Daftar UKM/Budget</span>
+			<span class="card-title">Daftar Divisi/Budget</span>
 			<form method="post" role="form" action="modul.php?isi=ukm-tabel">
 				<div class="form-group input-group">
 					<span class="input-group-addon"><i class="fa fa-calendar-o"></i></span>                                
@@ -98,7 +98,7 @@ if (isset($_POST['periode'])) {
           <i class="fa fa-plus"></i>
         </a>
         <ul style="list-style-type: none;">
-          <li><a href="modul.php?isi=ukm-tambah" class="btn-floating green" title="Tambah UKM/Budget"><i class="fa fa-usd"></i></a></li>
+          <li><a href="modul.php?isi=ukm-tambah" class="btn-floating green" title="Tambah Divisi/Budget"><i class="fa fa-usd"></i></a></li>
           <li><a data-toggle="modal" data-target="#myModal" class="btn-floating blue" title="Tambah Periode"><i class="fa fa-calendar-o"></i></a></li>
         </ul>
 </div>

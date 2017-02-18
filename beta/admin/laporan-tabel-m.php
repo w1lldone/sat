@@ -20,7 +20,7 @@
                         <span class="input-group-addon"><i class="fa fa-dribbble"></i> </span>                                
                         <select class="form-control" name="ukm" id="ukm" onclick="mengisiCard()">
                             <?php
-                            $sql2="SELECT * from ukm";
+                            $sql2="SELECT * from ukm order by nama";
                             $q2=mysql_query($sql2) or die(mysql_error());
                             echo "<option value=''>All</option>";
                             while ($row2=mysql_fetch_array($q2)){

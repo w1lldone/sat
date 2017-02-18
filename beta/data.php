@@ -105,7 +105,7 @@
     return true;
   } // function resize image
 
-  function uploadFile($files, $target_dir, $loc){
+  function uploadFile($files, $target_dir, $loc, $lebar){
 		$hasil=array();
 		$target_file = $target_dir . basename($files["fileToUpload"]["name"]);
 		$uploadOk = 1;
@@ -140,7 +140,7 @@
 			if (move_uploaded_file($files["fileToUpload"]["tmp_name"], $target_file)) {
 				$nama=basename( $files["fileToUpload"]["name"]);
 
-				sri("$target_dir"."$nama", 500, 0, true, "$target_dir"."res_$nama", true, false); //smart resize image
+				sri("$target_dir"."$nama", $lebar, 0, true, "$target_dir"."res_$nama", true, false); //smart resize image
 
 				$hasil = array('status' => $uploadOk, 'nama' => "$loc"."res_$nama");
 			} else {

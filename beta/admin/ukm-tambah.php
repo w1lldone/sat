@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-6 col-lg-offset-3">
-        <h1 class="page-header" style="color: black">Tambah UKM/Budgeting</h1>
+        <h1 class="page-header" style="color: black">Tambah Divisi/Budgeting</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <form method="post" role="form" action="save.php?act=tambah_ukm" enctype="multipart/form-data">
-                            <label>Nama UKM/Budgeting</label>
+                            <label>Nama Divisi/Budgeting</label>
                             <div class="form-group input-group">
                                 <span class="input-group-addon"><i class="fa fa-group"></i></span>
                                 <input type="text" class="form-control" name="nama">

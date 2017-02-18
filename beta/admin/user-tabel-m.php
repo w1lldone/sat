@@ -66,12 +66,8 @@
 <!-- /.modal -->
 
 <!-- Fixed action button -->
-<div class="fixed-action-btn click-to-toggle" style="bottom: 35px; right: 24px;">
-        <a class="btn-floating btn-large teal" title="Tambah">
-          <i class="fa fa-plus"></i>
-        </a>
-        <ul style="list-style-type: none;">
-          <li><a href="modul.php?isi=ukm-tambah" class="btn-floating green" title="Tambah UKM/Budget"><i class="fa fa-usd"></i></a></li>
-          <li><a data-toggle="modal" data-target="#myModal" class="btn-floating blue" title="Tambah Periode"><i class="fa fa-calendar-o"></i></a></li>
-        </ul>
+<div class="fixed-action-btn" style="bottom: 20px; right: 2%;">
+    <a href="modul.php?isi=user-tambah" class="btn-floating btn-large teal" title="Tambah Transaksi">
+      <i class="fa fa-plus"></i>
+  </a>
 </div>

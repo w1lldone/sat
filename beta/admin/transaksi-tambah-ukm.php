@@ -48,7 +48,7 @@
                                         <span class="input-group-addon"><i class="fa fa-dribbble"></i></span>
                                         <select class="form-control" name="ukm">
                                             <?php
-                                            $sql2="SELECT * FROM ukm where id = $sukm";
+                                            $sql2="SELECT * FROM ukm where id = $sukm order by nama asc";
                                             $q2=mysql_query($sql2) or die(mysql_error());
                                             while ($row2=mysql_fetch_array($q2)){
                                                 echo "<option value='$row2[id]'>$row2[nama]</option>";

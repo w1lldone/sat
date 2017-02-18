@@ -6,7 +6,7 @@ if (isset($_POST['periode'])) {
 ?>
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Daftar UKM/Budgeting SAT</h1>
+        <h1 class="page-header">Daftar Divisi/Budgeting SAT</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -125,7 +125,7 @@ if (isset($_POST['periode'])) {
           <i class="fa fa-plus"></i>
         </a>
         <ul style="list-style-type: none;">
-          <li><a href="modul.php?isi=ukm-tambah" class="btn-floating green" title="Tambah UKM/Budget"><i class="fa fa-usd"></i></a></li>
+          <li><a href="modul.php?isi=ukm-tambah" class="btn-floating green" title="Tambah Divisi/Budget"><i class="fa fa-usd"></i></a></li>
           <li><a data-toggle="modal" data-target="#myModal" class="btn-floating blue" title="Tambah Periode"><i class="fa fa-calendar-o"></i></a></li>
         </ul>
 </div>

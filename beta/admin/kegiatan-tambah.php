@@ -35,6 +35,11 @@
                             <div class="form-group input-group">
                                 <input type="file" name="fileToUpload" id="fileToUpload" required>
                             </div>
+                            <label>Link</label>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"><i class="fa fa-link"></i></span>
+                                <input type="text" placeholder="Kosongkan jika tidak ada link" class="form-control" name="link">
+                            </div>
                             <button class="btn btn-success" type="submit">Submit</button>                         
                         </form>
                     </div>

@@ -9,7 +9,7 @@ if ($_SESSION['pref']=='admin' || $_SESSION['pref']=='ukm') {
 		$cek=hasil("select id from ukm where nama = '$_POST[nama]'");
 
 		if ($cek!=null) {
-			echo "<script>window.alert('Nama UKM/Budget sudah ada');
+			echo "<script>window.alert('Nama Divisi/Budget sudah ada');
 			window.location=('modul.php?isi=ukm-tambah')</script>";
 		}
 
@@ -32,7 +32,7 @@ if ($_SESSION['pref']=='admin' || $_SESSION['pref']=='ukm') {
 				)
 				");
 
-			echo "<script>window.alert('UKM/Budget Berhasil ditambahkan');
+			echo "<script>window.alert('Divisi/Budget Berhasil ditambahkan');
 			window.location=('modul.php?isi=ukm-tabel')</script>";
 		}	
 	} //tambah ukm
@@ -51,14 +51,14 @@ if ($_SESSION['pref']=='admin' || $_SESSION['pref']=='ukm') {
 			where ukm = $_POST[id] and periode = $_POST[periode]
 			");
 
-		echo "<script>window.alert('UKM/Budget Berhasil diedit');
+		echo "<script>window.alert('Divisi/Budget Berhasil diedit');
 		window.location=('modul.php?isi=ukm-tabel')</script>";
 		
 	} //edit ukm
 
 	if ($_GET['act']=='hapus_ukm') {
 		mysql_query("DELETE FROM ukm where id = $_GET[id]");
-		echo "<script>window.alert('UKM/Budget berhasil dihapus');
+		echo "<script>window.alert('Divisi/Budget berhasil dihapus');
 		window.location=('modul.php?isi=ukm-tabel')</script>";
 	} // hapus ukm
 
@@ -99,16 +99,32 @@ if ($_SESSION['pref']=='admin' || $_SESSION['pref']=='ukm') {
 
 	if ($_GET['act']=='tambah_user') {
 		$pass=md5($_POST['password1']);
-		mysql_query("
-			INSERT INTO user(username, pass, nama, privilage, ukm)
+
+		if ($_POST['kewenangan']!='admin') {
+			mysql_query("
+				INSERT INTO user(username, pass, nama, privilage, ukm)
 				VALUES (
 				'$_POST[username]',
 				'$pass',
 				'$_POST[nama]',
-				'$_POST[kewenangan]',
+				'ukm',
 				'$_POST[ukm]'
 				)
-			");
+				");
+		}
+
+		if ($_POST['kewenangan']=='admin') {
+			mysql_query("
+				INSERT INTO user(username, pass, nama, privilage)
+				VALUES (
+				'$_POST[username]',
+				'$pass',
+				'$_POST[nama]',
+				'admin'
+				)
+				");
+		}
+		
 		echo "<script>window.alert('user berhasil ditambah');
 		window.location=('modul.php?isi=user-tabel')</script>";
 	} // tambah user
@@ -169,7 +185,7 @@ if ($_SESSION['pref']=='admin' || $_SESSION['pref']=='ukm') {
 		$target_dir="../".$loc;
 		$files=$_FILES;
 		
-		$upload=uploadFile($files, $target_dir, $loc);
+		$upload=uploadFile($files, $target_dir, $loc, 500);
 
 		if ($upload['status']==1) {
 			mysql_query("INSERT INTO transaksi(ukm, username, periode, tanggal, jumlah, keperluan, nota, keterangan)
@@ -210,7 +226,7 @@ if ($_SESSION['pref']=='admin' || $_SESSION['pref']=='ukm') {
 			$gbrlama=hasil("SELECT nota from transaksi where id = $_POST[id]");
 			$files=$_FILES;
 
-			$upload=uploadFile($files, $target_dir, $loc);
+			$upload=uploadFile($files, $target_dir, $loc, 500);
 
 			if ($upload['status']==1) {
 				mysql_query("
@@ -256,26 +272,39 @@ if ($_SESSION['pref']=='admin' || $_SESSION['pref']=='ukm') {
 		$target_dir="../".$loc;
 		$files=$_FILES;
 
-		$upload=uploadFile($files, $target_dir, $loc);
+		if (isset($_POST['link'])) {
+			$link=$_POST['link'];
+		} else{
+			$link='';
+		}
+
+		$upload=uploadFile($files, $target_dir, $loc, 800);
 		
 		if ($upload['status']==1) {
-		mysql_query("INSERT INTO kegiatan(tanggal, judul, keterangan, gambar)
+		mysql_query("INSERT INTO kegiatan(tanggal, judul, keterangan, gambar, link)
 					VALUES(
 					'$_POST[tanggal]',
 					'$_POST[judul]',
 					'$_POST[keterangan]',
-					'$upload[nama]')");
+					'$upload[nama]',
+					'$link')");
 		echo "<script>window.alert('Tambah Kegiatan berhasil');
 				window.location=('modul.php?isi=kegiatan-tabel')</script>";	
 		}
-	} // tambah kegiatan
+	} // tambah edit
 
 
 	if ($_GET['act']=='edit_kegiatan') {
+		if (isset($_POST['link'])) {
+			$link=$_POST['link'];
+		} else{
+			$link='';
+		}
 		mysql_query("UPDATE kegiatan set
 			judul='$_POST[judul]',
 			keterangan='$_POST[keterangan]',
-			tanggal='$_POST[tanggal]' 
+			tanggal='$_POST[tanggal]',
+			link='$link' 
 			where id=$_POST[id]");
 
 		if (!empty($_FILES["fileToUpload"]["name"])) {
@@ -284,7 +313,7 @@ if ($_SESSION['pref']=='admin' || $_SESSION['pref']=='ukm') {
 			$gbrlama=hasil("SELECT gambar from kegiatan where id = $_POST[id]");
 			$files=$_FILES;
 
-			$upload=uploadFile($files, $target_dir, $loc);
+			$upload=uploadFile($files, $target_dir, $loc, 800);
 
 			if ($upload['status']==1) {
 				mysql_query("
@@ -332,7 +361,7 @@ if ($_SESSION['pref']=='admin' || $_SESSION['pref']=='ukm') {
 			$gbrlama=hasil("SELECT foto from pengurus where id = $_POST[id]");
 			$files=$_FILES;
 
-			$upload=uploadFile($files, $target_dir, $loc);
+			$upload=uploadFile($files, $target_dir, $loc, 500);
 
 			if ($upload['status']==1) {
 				mysql_query("

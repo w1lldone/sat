@@ -41,6 +41,11 @@
                                 <img width="300" src="../<?php echo $row['gambar'];?>">
                                 <input type="file" name="fileToUpload" id="fileToUpload">
                             </div>
+                            <label>Link</label>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon"><i class="fa fa-link"></i></span>
+                                <input type="text" value="<?php echo $row['link']; ?>" placeholder="Kosongkan jika tidak ada link" class="form-control" name="link">
+                            </div>
                             <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
                             <button class="btn btn-success" type="submit">Submit</button>                         
                         </form>

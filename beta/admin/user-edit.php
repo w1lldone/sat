@@ -60,7 +60,7 @@
                                             if ($jabatan=='admin') {
                                                 echo "<option value='admin'>Admin</option>";
                                             } else{
-                                                echo "<option value='ukm'>UKM</option>";
+                                                echo "<option value='ukm'>Divisi</option>";
                                             } 
                                             ?>
                                         </select>
@@ -69,12 +69,12 @@
                                 <div class="col-lg-6">
                                 <?php
                                     if ($jabatan!='admin') { ?>
-                                    <label>UKM (Kosongkan jika admin)</label>
+                                    <label>Divisi (Kosongkan jika admin)</label>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon"><i class="fa fa-dribbble"></i></span>
                                         <select class="form-control" name="ukm">
                                             <?php
-                                                $sql2="SELECT * FROM ukm where id <> $ukm";
+                                                $sql2="SELECT * FROM ukm where id <> $ukm order by nama asc";
                                                 $q2=mysql_query($sql2) or die(mysql_error());
                                                 $namaukm=hasil("SELECT nama from ukm where id = $ukm");
                                                 echo "<option value='$ukm'>$namaukm</option>";

@@ -154,4 +154,26 @@ if(!empty($_POST["username"]) && $_GET['act']=='cek-user') {
 
 		$exporter->finalize();
 	}
+
+	// detail pengeluaran
+	if (!empty($_POST["id"]) && $_GET['act']=='det-trans') {
+		$query="SELECT * FROM transaksi WHERE ukm = $_POST[id]";
+		$q=mysql_query($query) or die(mysql_error());
+		$ukm=hasil("SELECT nama from ukm where id = $_POST[id]");
+		echo "<h4>Detail Transaksi $ukm </h4>";
+		echo "<ul class='collection'>";
+		while ($row=mysql_fetch_array($q)) { 
+			$keperluan=hasil("SELECT keperluan from keperluan where id = $row[keperluan]");?>
+			
+				<li class="collection-item avatar">
+					<i class="material-icons circle teal">shopping_cart</i>
+					<span class="title"><?php echo $keperluan; ?></span>
+					<p><?php echo $row['jumlah'] ?><br>
+						<?php echo $row['keterangan'] ?>
+					</p>
+					<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+				</li>			
+		<?php }
+		echo "</ul>";
+	}
 ?>

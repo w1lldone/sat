@@ -59,7 +59,7 @@ if (!empty($_POST['periode'])) {
                                 <span class="input-group-addon"><i class="fa fa-dribbble"></i> </span>                                
                                 <select class="form-control" name="ukm" id="ukm">
                                     <?php
-                                    $sql2="SELECT * from ukm where id $uk";
+                                    $sql2="SELECT * from ukm where id $uk order by nama";
                                     $q2=mysql_query($sql2) or die(mysql_error());
                                     if ($_POST['ukm']!="") {
                                         $val=hasil("SELECT nama from ukm where id = $_POST[ukm]");
